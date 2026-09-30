@@ -1,0 +1,27 @@
+bundle:
+  name: projeto_dados_lakehouse
+
+variables:
+  catalogo:
+    description: "Catálogo Unity Catalog para o lakehouse"
+    default: projeto_dados
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://...
+    variables:
+      catalogo: projeto_dados
+
+  prod:
+    mode: production
+    workspace:
+      host: https://...
+
+    variables:
+      catalogo: projeto_dados

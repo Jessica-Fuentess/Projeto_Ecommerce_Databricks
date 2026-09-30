@@ -1,0 +1,24 @@
+resources:
+  pipelines:
+    pipeline_ecommerce:
+      name: "Transformação E-commerce (silver e gold)"
+
+      # Configuração do pipeline
+      development: false
+      edition: ADVANCED
+      channel: CURRENT
+      serverless: true
+
+      # Storage
+      catalog: ${var.catalogo}
+      target: silver
+
+      # Bibliotecas (arquivos .py e .sql em pipeline/)
+      libraries:
+        - file:
+            path: ../src
+
+      # Configuração de desenvolvimento
+      configuration:
+        spark.databricks.delta.schema.autoMerge.enabled: "true"
+        pipelines.applyChangesPreviewEnabled: "true"

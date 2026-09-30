@@ -1,0 +1,27 @@
+resources:
+  jobs:
+    job_lakehouse_diario:
+      name: "Lakehouse E-commerce - Atualização Diária"
+
+      # Schedule: Segunda a sexta, 6h da manhã (horário de Brasília UTC-3)
+      schedule:
+        quartz_cron_expression: "0 0 6 ? * MON-FRI"
+        timezone_id: "America/Sao_Paulo"
+        pause_status: PAUSED
+
+      # Timeout e retries
+      timeout_seconds: 3600  # 1 hora
+      max_concurrent_runs: 1
+
+      # Tasks
+      tasks:
+        - task_key: executar_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.pipeline_ecommerce.id}
+            full_refresh: false
+
+          timeout_seconds: 3600
+
+      # Tags
+      tags:
+        projeto: "lakehouse_ecommerce"
