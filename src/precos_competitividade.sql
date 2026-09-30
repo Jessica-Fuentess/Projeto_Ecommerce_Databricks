@@ -24,7 +24,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.precos_competitividade (
   receita                   DECIMAL(20,2) COMMENT 'Receita do produto no período, em reais (R$). Zero se nunca vendeu.',
   itens_vendidos            BIGINT        COMMENT 'Unidades vendidas do produto no período.'
 )
-COMMENT 'Nosso preço comparado ao de 4 concorrentes (Mercado Livre, Amazon, Magalu e Shopee), uma linha por produto monitorado. Use para perguntas de competitividade, produtos caros ou baratos em relação ao mercado. Produtos com possui_preco_suspeito = true continuam em todas as contas: preço suspeito é apenas um alerta para confirmação antes de uma decisão de pricing, pois uma promoção relâmpago pode explicar a diferença. Período dos dados: 13/12/2025 a 11/01/2026.'
+COMMENT 'Nosso preço comparado ao de 4 concorrentes (Mercado Livre, Amazon, Magalu e Shopee), uma linha por produto monitorado.'
 AS
 WITH mercado AS (
   SELECT

@@ -4,8 +4,8 @@
 -- Responde "quanto vendemos por dia, por hora, por canal?". Inclui TODAS as vendas, inclusive
 -- as de produtos não cadastrados: dinheiro que entrou é receita.
 --
--- Os comentários da tabela e das colunas moram aqui, na definição. O Genie (Aula 4) lê esses
--- comentários para escrever o SQL, e como fazem parte da definição, sobrevivem a cada refresh.
+-- Os comentários das colunas documentam a semântica dos indicadores
+-- para consumo analítico e por ferramentas de linguagem natural.
 
 CREATE OR REFRESH MATERIALIZED VIEW gold.vendas_temporais (
   data            DATE          COMMENT 'Data da venda (sem horário).',
@@ -18,7 +18,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.vendas_temporais (
   receita         DECIMAL(20,2) COMMENT 'Receita bruta em reais (R$) = quantidade × preço unitário. Somar para totalizar.',
   clientes_unicos BIGINT        COMMENT 'Clientes distintos NAQUELA linha (dia, hora, canal). Não somar entre linhas: para clientes únicos no período use gold.clientes_segmentacao.'
 )
-COMMENT 'Vendas agregadas por dia, hora e canal. Use para perguntas de receita, número de vendas e ticket médio ao longo do tempo, por dia da semana, por hora ou por canal. Inclui todas as vendas, mesmo de produtos não cadastrados. Período dos dados: 13/12/2025 a 11/01/2026.'
+COMMENT 'Vendas agregadas por dia, hora e canal.'
 AS
 SELECT
   data,

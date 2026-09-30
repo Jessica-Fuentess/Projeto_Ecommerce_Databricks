@@ -30,7 +30,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.vendas_detalhadas (
   receita                 DECIMAL(10,2) COMMENT 'Receita bruta da venda em reais (R$) = quantidade × preço unitário. Somar para totalizar.',
   venda_antes_do_cadastro BOOLEAN       COMMENT 'true quando a venda aconteceu antes da data de criação do produto (problema de qualidade de dados).'
 )
-COMMENT 'Uma linha por venda, com produto, cliente, região e segmento já juntos. Use para perguntas que cruzam dimensões, como receita por região e categoria, ou canal preferido de cada segmento. Inclui todas as vendas, mesmo de produtos não cadastrados. Período dos dados: 13/12/2025 a 11/01/2026.'
+COMMENT 'Uma linha por venda, com produto, cliente, região e segmento já juntos.'
 CLUSTER BY (data)
 AS
 SELECT

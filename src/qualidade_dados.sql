@@ -17,7 +17,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.qualidade_dados (
   linhas_afetadas BIGINT        COMMENT 'Quantidade de linhas da tabela que caem na regra.',
   receita_afetada DECIMAL(20,2) COMMENT 'Receita em reais (R$) das vendas afetadas. Vazia quando a regra não envolve vendas.'
 )
-COMMENT 'Placar de qualidade dos dados: uma linha por regra, com quantas linhas e quanta receita cada problema afeta. Use para perguntas sobre confiabilidade dos números, vendas de produtos não cadastrados e preços suspeitos de concorrentes.'
+COMMENT 'Placar de qualidade dos dados: uma linha por regra, com quantas linhas e quanta receita cada problema afeta.'
 AS
 SELECT
   'Venda de produto não cadastrado' AS regra,

@@ -1,7 +1,7 @@
 -- Gold · segmentação de clientes (diretoria de Customer Success)
 -- Grão: uma linha por cliente.
 --
--- Regra definida com a diretora de CS:
+-- A segmentação foi definida para distribuir a carteira de clientes em faixas de receita com volume suficiente para análise:
 --   VIP       a partir de R$ 22.000
 --   TOP_TIER  de R$ 17.000 até R$ 21.999,99
 --   REGULAR   abaixo de R$ 17.000
@@ -25,7 +25,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.clientes_segmentacao (
   segmento_cliente STRING        COMMENT 'Segmento pela receita no período: VIP (a partir de R$ 22.000), TOP_TIER (R$ 17.000 a R$ 21.999,99) ou REGULAR (abaixo de R$ 17.000).',
   ranking_receita  INT           COMMENT 'Posição do cliente no ranking de receita (1 = cliente que mais gerou receita).'
 )
-COMMENT 'Uma linha por cliente com receita, compras, ticket médio, região e segmento. Use para perguntas sobre melhores clientes, clientes VIP, segmentos, estados e regiões.'
+COMMENT 'Uma linha por cliente com receita, compras, ticket médio, região e segmento.'
 AS
 WITH receita_por_cliente AS (
   SELECT

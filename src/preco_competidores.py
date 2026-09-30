@@ -1,10 +1,3 @@
-# Silver · preço dos concorrentes
-#
-# - `data_coleta` chega como texto; vira timestamp.
-# - 55 preços são exatamente metade do nosso. Pode ser promoção de verdade ou erro de coleta:
-#   a silver não decide, só marca `preco_suspeito`. A linha continua na tabela (os números de
-#   referência dependem dela) e a expectation mede quantas são a cada execução.
-
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
 
@@ -13,7 +6,6 @@ DINHEIRO = "decimal(10,2)"
 # Abaixo de 60% do nosso preço: nenhum concorrente legítimo aparece nessa faixa
 # (os demais ficam entre 92% e 110%).
 LIMITE_SUSPEITO = 0.6
-
 
 @dp.materialized_view(comment="Preço de cada concorrente por produto, com marcação de preço suspeito.")
 @dp.expect_all_or_fail({

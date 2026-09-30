@@ -18,7 +18,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.vendas_produtos (
   ranking_receita      INT           COMMENT 'Posição do produto no ranking geral de receita (1 = maior receita).',
   ranking_na_categoria INT           COMMENT 'Posição do produto no ranking de receita dentro da própria categoria (1 = maior).'
 )
-COMMENT 'Desempenho de vendas por produto no período: receita, itens vendidos, ticket médio e rankings. Use para "produtos mais vendidos", "receita por categoria" e "receita por marca". Vendas de produtos fora do catálogo aparecem com nome "Produto não cadastrado". Período dos dados: 13/12/2025 a 11/01/2026.'
+COMMENT 'Desempenho de vendas por produto no período: receita, itens vendidos, ticket médio e rankings.'
 AS
 WITH por_produto AS (
   SELECT
