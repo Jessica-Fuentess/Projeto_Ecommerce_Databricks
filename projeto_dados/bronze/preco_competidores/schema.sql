@@ -1,0 +1,16 @@
+CREATE TABLE projeto_dados.bronze.preco_competidores (
+  id_produto STRING COLLATE UTF8_BINARY,
+  nome_concorrente STRING COLLATE UTF8_BINARY,
+  preco_concorrente DOUBLE,
+  data_coleta STRING COLLATE UTF8_BINARY)
+USING delta
+TBLPROPERTIES (
+  'delta.enableDeletionVectors' = 'true',
+  'delta.feature.appendOnly' = 'supported',
+  'delta.feature.deletionVectors' = 'supported',
+  'delta.feature.invariants' = 'supported',
+  'delta.minReaderVersion' = '3',
+  'delta.minWriterVersion' = '7',
+  'delta.parquet.compression.codec' = 'zstd',
+  'delta.parquet.format.version' = '2.12.0',
+  'delta.parquet.format.version.afe.internal' = '2.12.0')

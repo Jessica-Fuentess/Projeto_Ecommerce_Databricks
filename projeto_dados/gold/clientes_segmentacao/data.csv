@@ -1,0 +1,51 @@
+id_cliente,nome_cliente,estado,nome_estado,regiao,total_compras,receita,ticket_medio,primeira_compra,ultima_compra,segmento_cliente,ranking_receita
+cus_2b1b3e2a1515,Ana Sophia Pereira,MG,Minas Gerais,Sudeste,53,30716.63,579.56,2025-12-13,2026-01-11,VIP,1
+cus_25d1cb23f872,Melissa Pastor,AC,Acre,Norte,68,30211.93,444.29,2025-12-13,2026-01-11,VIP,2
+cus_c3944101594c,Murilo Da Mata,RR,Roraima,Norte,81,28285.82,349.21,2025-12-13,2026-01-11,VIP,3
+cus_fa3a88d1ccef,Benício Gomes,AL,Alagoas,Nordeste,72,27424.23,380.89,2025-12-13,2026-01-11,VIP,4
+cus_f64907d41a69,Henrique Da Conceição,DF,Distrito Federal,Centro-Oeste,77,26687.99,346.60,2025-12-13,2026-01-11,VIP,5
+cus_b0026583b709,Mariane Pacheco,MT,Mato Grosso,Centro-Oeste,73,25454.83,348.70,2025-12-13,2026-01-10,VIP,6
+cus_4e62d52db97a,Josué Souza,RJ,Rio de Janeiro,Sudeste,50,24750.17,495.00,2025-12-13,2026-01-10,VIP,7
+cus_c9cd13d1ae9f,Yasmin Siqueira,PA,Pará,Norte,53,23674.10,446.68,2025-12-14,2026-01-11,VIP,8
+cus_3580317ddeab,Bella Borges,AM,Amazonas,Norte,57,22865.99,401.16,2025-12-14,2026-01-11,VIP,9
+cus_0343c0763f76,Vitor Gabriel Da Luz,RS,Rio Grande do Sul,Sul,65,22734.53,349.76,2025-12-13,2026-01-11,VIP,10
+cus_71308b76151a,Amanda Sousa,MS,Mato Grosso do Sul,Centro-Oeste,63,21960.13,348.57,2025-12-13,2026-01-11,TOP_TIER,11
+cus_cf84750c1fb4,Alana Teixeira,MA,Maranhão,Nordeste,61,21609.35,354.25,2025-12-13,2026-01-11,TOP_TIER,12
+cus_96658dc10aa5,Agatha Silveira,PA,Pará,Norte,66,21445.08,324.93,2025-12-13,2026-01-11,TOP_TIER,13
+cus_66677d443e5e,Cecília Da Luz,AC,Acre,Norte,64,21335.05,333.36,2025-12-13,2026-01-11,TOP_TIER,14
+cus_f50da5532735,João Gabriel Porto,MG,Minas Gerais,Sudeste,57,21238.95,372.61,2025-12-13,2026-01-11,TOP_TIER,15
+cus_7262f4e5ce9f,Sophia Monteiro,SP,São Paulo,Sudeste,62,21205.90,342.03,2025-12-13,2026-01-10,TOP_TIER,16
+cus_31874cf2d1e5,Nina Moura,SP,São Paulo,Sudeste,59,21109.53,357.79,2025-12-14,2026-01-11,TOP_TIER,17
+cus_25c656241a9a,Amanda Novais,GO,Goiás,Centro-Oeste,54,21009.39,389.06,2025-12-13,2026-01-11,TOP_TIER,18
+cus_d4db3db9eccb,Ana Julia Camargo,PB,Paraíba,Nordeste,59,20861.16,353.58,2025-12-13,2026-01-10,TOP_TIER,19
+cus_eae005fd3470,Calebe Fogaça,TO,Tocantins,Norte,60,20596.14,343.27,2025-12-13,2026-01-11,TOP_TIER,20
+cus_13af118ef4e8,Sarah Teixeira,AM,Amazonas,Norte,65,20065.60,308.70,2025-12-13,2026-01-11,TOP_TIER,21
+cus_9d2dd4770a79,Luigi Camargo,GO,Goiás,Centro-Oeste,60,20052.82,334.21,2025-12-13,2026-01-11,TOP_TIER,22
+cus_ec8d75866856,Luan Vargas,RS,Rio Grande do Sul,Sul,74,19671.39,265.83,2025-12-13,2026-01-11,TOP_TIER,23
+cus_78ab1cf16e12,Beatriz Garcia,SE,Sergipe,Nordeste,61,19530.47,320.17,2025-12-13,2026-01-11,TOP_TIER,24
+cus_f1a06ae11717,Gustavo Henrique Rios,AM,Amazonas,Norte,63,19185.31,304.53,2025-12-13,2026-01-10,TOP_TIER,25
+cus_b42a15933072,Heitor Rezende,PE,Pernambuco,Nordeste,68,19024.24,279.77,2025-12-13,2026-01-11,TOP_TIER,26
+cus_508a15ccf0fa,Zoe Campos,MT,Mato Grosso,Centro-Oeste,55,19000.14,345.46,2025-12-13,2026-01-11,TOP_TIER,27
+cus_6ff11137142d,Vitor Gabriel Sá,TO,Tocantins,Norte,63,18722.52,297.18,2025-12-13,2026-01-11,TOP_TIER,28
+cus_a01814ad9247,Ana Beatriz Alves,SP,São Paulo,Sudeste,59,18583.20,314.97,2025-12-13,2026-01-11,TOP_TIER,29
+cus_0ff4cceccc6f,João Aparecida,CE,Ceará,Nordeste,53,18436.20,347.85,2025-12-13,2026-01-11,TOP_TIER,30
+cus_8fa04d3a5837,Rafael Porto,RS,Rio Grande do Sul,Sul,64,18321.18,286.27,2025-12-13,2026-01-11,TOP_TIER,31
+cus_8ad3c8745efb,Eduardo Cunha,AC,Acre,Norte,58,18286.80,315.29,2025-12-13,2026-01-11,TOP_TIER,32
+cus_c8d383cfde0c,Maria Cecília Oliveira,AM,Amazonas,Norte,55,17357.77,315.60,2025-12-13,2026-01-11,TOP_TIER,33
+cus_79d52b75f259,Elisa Freitas,CE,Ceará,Nordeste,55,17289.51,314.35,2025-12-13,2026-01-11,TOP_TIER,34
+cus_1a38731e1fbe,Otávio Fernandes,ES,Espírito Santo,Sudeste,62,17163.30,276.83,2025-12-14,2026-01-11,TOP_TIER,35
+cus_a8f8e01eaee8,Elisa Martins,ES,Espírito Santo,Sudeste,71,16924.67,238.38,2025-12-13,2026-01-11,REGULAR,36
+cus_a9747473c5c6,Ana Lívia Aparecida,AL,Alagoas,Nordeste,71,16915.97,238.25,2025-12-13,2026-01-11,REGULAR,37
+cus_f1eccf8e0d99,Luiz Miguel Câmara,GO,Goiás,Centro-Oeste,55,16836.38,306.12,2025-12-13,2026-01-11,REGULAR,38
+cus_d36c11b261a6,Cauã Rocha,MA,Maranhão,Nordeste,62,16563.85,267.16,2025-12-13,2026-01-11,REGULAR,39
+cus_418af67b6b28,Miguel Ramos,TO,Tocantins,Norte,56,16550.54,295.55,2025-12-14,2026-01-11,REGULAR,40
+cus_d2762f5968fe,Aurora Pastor,SE,Sergipe,Nordeste,59,15435.67,261.62,2025-12-13,2026-01-11,REGULAR,41
+cus_4209c24e0be2,Maya Castro,TO,Tocantins,Norte,56,15186.43,271.19,2025-12-13,2026-01-11,REGULAR,42
+cus_911b23c97589,Heitor Nunes,MS,Mato Grosso do Sul,Centro-Oeste,53,15121.01,285.30,2025-12-15,2026-01-11,REGULAR,43
+cus_639110db69ed,João Vitor Barros,AP,Amapá,Norte,60,14425.28,240.42,2025-12-13,2026-01-11,REGULAR,44
+cus_a2e18141f826,Ísis Leão,CE,Ceará,Nordeste,63,13407.52,212.82,2025-12-13,2026-01-11,REGULAR,45
+cus_644bf6820c61,Heloísa Andrade,PR,Paraná,Sul,48,13316.83,277.43,2025-12-13,2026-01-11,REGULAR,46
+cus_36595eecf105,Bruno Novaes,PA,Pará,Norte,58,13169.93,227.07,2025-12-13,2026-01-11,REGULAR,47
+cus_0914bdf6e1fe,Isabelly Câmara,MT,Mato Grosso,Centro-Oeste,36,12976.16,360.45,2025-12-14,2026-01-10,REGULAR,48
+cus_884be6e0ce9a,Emanuel Vieira,PA,Pará,Norte,49,11714.40,239.07,2025-12-13,2026-01-11,REGULAR,49
+cus_df9e0b31fa20,Yuri Albuquerque,SE,Sergipe,Nordeste,54,9665.29,178.99,2025-12-14,2026-01-09,REGULAR,50

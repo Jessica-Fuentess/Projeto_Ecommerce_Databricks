@@ -1,0 +1,206 @@
+id_produto,nome_produto,categoria,marca,faixa_preco,produto_cadastrado,total_vendas,itens_vendidos,receita,ticket_medio,ranking_receita,ranking_na_categoria
+prd_f063f46a7ef8,Fone de Ouvido Esportivo,Áudio,Consul,PREMIUM,True,64,85,116462.65,1819.73,1,1
+prd_d22d1b8b1502,Camisa Social,Moda,Brastemp,PREMIUM,True,72,103,115794.92,1608.26,2,1
+prd_6d4e3b1efd0c,Necessaire,Acessórios,Xiaomi,PREMIUM,True,41,57,63668.43,1552.89,3,1
+prd_334f4a32f979,Persiana Vertical,Casa,Motorola,BASICO,True,65,108,42310.56,650.93,4,1
+prd_645f7859f379,Calça Jeans Skinny,Moda,Asus,BASICO,True,62,88,41313.34,666.34,5,2
+prd_afd58e5fd09d,Condicionador Hidratante,Beleza,Asus,BASICO,True,54,71,31587.75,584.96,6,1
+prd_d500fa66507e,Shorts Jeans,Moda,Electrolux,BASICO,True,52,76,28431.49,546.76,7,3
+prd_8b22fd85d500,Garrafa Térmica 1L,Cozinha,Sony,BASICO,True,53,69,21498.06,405.62,8,1
+prd_385035a5bc20,Notebook Inspiron 15,Eletrônicos,Adidas,BASICO,True,63,98,20813.53,330.37,9,1
+prd_b7490508211e,Vestido Floral,Moda,Apple,BASICO,True,64,84,17842.00,278.78,10,4
+prd_bf5d8671f7a9,Placa Mãe B450,Informática,Brastemp,BASICO,True,88,134,15569.17,176.92,11,1
+prd_ff35b88df534,SSD 500GB,Eletrônicos,Acer,BASICO,True,54,73,15214.52,281.75,12,2
+prd_045813f96891,Cardigan de Lã,Moda,LG,BASICO,True,62,102,13898.58,224.17,13,5
+prd_dfac11815029,Microfone para Stream,Games,Apple,BASICO,True,46,67,12294.45,267.27,14,1
+prd_92c0ecf60a58,Jogo de Toalhas,Casa,Brastemp,BASICO,True,47,69,12011.76,255.57,15,2
+prd_ae7b2acb6812,Cinto de Couro,Acessórios,Samsung,PREMIUM,True,8,11,11809.79,1476.22,16,2
+prd_40dc70ce05b2,Assadeira de Vidro,Cozinha,Lenovo,PREMIUM,True,8,9,11663.44,1457.93,17,2
+prd_db8fc9e6fa53,Paleta de Sombras,Beleza,LG,PREMIUM,True,6,8,10870.57,1811.76,18,2
+prd_2cbafff50c72,Sabonete Facial,Beleza,Nike,BASICO,True,73,112,10826.78,148.31,19,3
+prd_686e2aab873d,Blusa de Frio,Moda,Philips,BASICO,True,70,110,9589.86,137.00,20,6
+prd_0347eab01a6c,Memória RAM 8GB,Informática,Mondial,MEDIO,True,11,15,9202.20,836.56,21,2
+prd_2293732b7542,Cortina Blackout,Casa,Xiaomi,BASICO,True,85,130,8733.04,102.74,22,3
+prd_18c839427e8c,Gabinete ATX,Informática,Samsung,MEDIO,True,8,11,8668.06,1083.51,23,3
+prd_30518d908a92,Cinto de Couro,Acessórios,Asus,BASICO,True,70,107,8410.78,120.15,24,3
+prd_38c1b898aecc,Microfone para Stream,Games,Samsung,BASICO,True,45,62,8334.20,185.20,25,2
+prd_51511e44c92a,Kit Gamer Completo,Games,Mondial,BASICO,True,65,93,8129.85,125.07,26,3
+prd_651e8d1acbf8,Processador de Alimentos,Cozinha,Brastemp,BASICO,True,13,17,7554.61,581.12,27,3
+prd_9b4e39e312d9,Carteira de Couro,Acessórios,Asus,PREMIUM,True,6,6,7405.94,1234.32,28,4
+prd_cc3053305ba7,iPhone 14,Eletrônicos,Motorola,MEDIO,True,8,11,6662.50,832.81,29,3
+prd_d92ad43fa137,Smart TV 43 Polegadas,Eletrônicos,Philips,BASICO,True,71,99,6325.38,89.09,30,4
+prd_305f920b8836,Brincos de Prata,Acessórios,Lenovo,MEDIO,True,7,7,6174.29,882.04,31,5
+prd_9d1aea4d28ae,Pesos de Pulso,Esporte,Sony,PREMIUM,True,2,5,6094.54,3047.27,32,1
+prd_7798c88cc490,Kit Utensílios de Cozinha,Cozinha,Consul,BASICO,True,9,14,6074.79,674.98,33,4
+prd_3053916502fb,Cabo USB-C,Eletrônicos,Electrolux,BASICO,True,10,14,5987.44,598.74,34,5
+prd_23664e42a71c,Jogo de Toalhas,Casa,Xiaomi,BASICO,True,37,52,5517.07,149.11,35,4
+prd_a4025bac91a7,Óculos de Sol,Acessórios,Xiaomi,BASICO,True,69,104,5321.61,77.12,36,6
+prd_4ee65ed59110,Frigideira Antiaderente,Cozinha,Philips,BASICO,True,84,124,5061.36,60.25,37,5
+prd_9259039bf9b2,Tábua de Corte,Cozinha,Sony,BASICO,True,13,21,4880.04,375.39,38,6
+prd_c62100cc281c,Webcam para Stream,Games,Samsung,BASICO,True,72,102,4828.73,67.07,39,4
+prd_6b1b9c7303d5,Peneira Inox,Cozinha,Samsung,MEDIO,True,3,6,4557.64,1519.21,40,7
+prd_1091c2cfe1e9,Edredom Casal,Casa,Sony,BASICO,True,8,11,4557.12,569.64,41,5
+prd_9aa451566556,Jarra de Vidro,Cozinha,Apple,BASICO,True,10,12,4513.23,451.32,42,8
+prd_6eca734f2e84,Edredom Casal,Casa,Electrolux,BASICO,True,14,20,4411.60,315.11,43,6
+prd_b76e68fde5cb,Perfume 100ml,Beleza,Nike,BASICO,True,7,10,4350.03,621.43,44,4
+prd_ff56c9132964,Regata Básica,Moda,Xiaomi,BASICO,True,16,20,4140.70,258.79,45,7
+prd_3e585d1aaf6c,Gabinete ATX,Informática,LG,BASICO,True,12,19,4072.06,339.34,46,4
+prd_df1e44c528e0,Fone de Ouvido Esportivo,Áudio,O Boticário,BASICO,True,15,21,3994.89,266.33,47,2
+prd_0c5fb549e1c2,Edredom Casal,Casa,Dell,BASICO,True,10,13,3743.13,374.31,48,7
+prd_9239eec8982d,HD Externo 2TB,Informática,Arno,BASICO,True,52,74,3738.06,71.89,49,5
+prd_c29b93111bd9,Colar de Ouro,Acessórios,Arno,BASICO,True,13,19,3713.87,285.68,50,7
+prd_032c166122f7,Controle Xbox,Games,Xiaomi,BASICO,True,11,17,3573.39,324.85,51,5
+prd_5112469132ff,Placa Mãe B450,Informática,Dell,BASICO,True,5,9,3535.41,707.08,52,6
+prd_e66747c9b59e,Cesto de Vime,Casa,Brastemp,BASICO,True,13,17,3230.10,248.47,53,8
+prd_82cd17cb589d,Persiana Vertical,Casa,Dell,BASICO,True,49,73,3111.46,63.50,54,9
+prd_64000b956cf3,Tapete Persa,Casa,Motorola,BASICO,True,8,12,3093.85,386.73,55,10
+prd_07ff67746d02,Faqueiro Inox 12 Peças,Cozinha,Mondial,BASICO,True,8,10,3058.95,382.37,56,9
+prd_205f309c1a21,Tapete Persa,Casa,Sony,BASICO,True,67,90,3035.35,45.30,57,11
+prd_28cd8ab86936,Porta-moedas,Acessórios,Xiaomi,BASICO,True,8,13,2881.50,360.19,58,8
+prd_295160cbf171,Controle Xbox,Games,Apple,BASICO,True,9,10,2844.71,316.08,59,6
+prd_9d7b9035daa0,Forma de Bolo Redonda,Cozinha,O Boticário,BASICO,True,12,15,2811.36,234.28,60,10
+prd_c1f6dcbed826,Descascador de Legumes,Cozinha,Adidas,BASICO,True,11,15,2758.49,250.77,61,11
+prd_84a009f1889d,Cortina Box,Casa,Consul,BASICO,True,59,85,2732.25,46.31,62,12
+prd_b17460641fb4,Garrafa Térmica 1L,Cozinha,Xiaomi,BASICO,True,6,12,2723.88,453.98,63,12
+prd_622325b011e6,Iluminador para Stream,Games,Sony,BASICO,True,5,9,2720.76,544.15,64,7
+prd_0c113961481f,Vestido Floral,Moda,Apple,BASICO,True,6,11,2560.93,426.82,65,8
+prd_a4ee2d52d1c5,Suporte para Controle,Games,Arno,BASICO,True,5,12,2534.71,506.94,66,8
+prd_728d12065bf5,Suporte para Monitor,Informática,Consul,BASICO,True,5,6,2515.50,503.10,67,7
+prd_d8ec0b81e223,Toca-discos USB,Áudio,O Boticário,BASICO,True,5,7,2454.53,490.91,68,3
+prd_56e08463d21c,Tapete Persa,Casa,Brastemp,BASICO,True,8,11,2373.32,296.67,69,13
+prd_5a6fd66e1c00,Vestido Casual,Moda,Philips,BASICO,True,12,22,2365.26,197.11,70,9
+prd_84fc6c2a33f2,Abre-latas,Cozinha,Sony,BASICO,True,4,6,2284.60,571.15,71,13
+prd_e561d57f2a21,Caixa de Som 2.1,Áudio,Acer,BASICO,True,10,19,2129.21,212.92,72,4
+prd_380fab5d7131,Porta-retrato,Casa,Philips,BASICO,True,10,15,2114.92,211.49,73,14
+prd_996db03524ae,Elástico de Resistência,Esporte,Sony,BASICO,True,13,17,2093.90,161.07,74,2
+prd_c90040774892,Tênis de Corrida,Esporte,Sony,BASICO,True,9,14,2020.06,224.45,75,3
+prd_7dd7624b4d5f,Fone de Ouvido com Fio,Áudio,Brastemp,BASICO,True,5,7,2010.82,402.16,76,5
+prd_5744e3f88341,Jarra de Vidro,Cozinha,Apple,BASICO,True,10,11,1986.89,198.69,77,14
+prd_2befc441dd56,Bicicleta Ergométrica,Esporte,Motorola,BASICO,True,7,9,1957.86,279.69,78,4
+prd_ef0b5e05efef,Creme Hidratante,Beleza,Electrolux,BASICO,True,6,8,1908.83,318.14,79,5
+prd_eda682ecfacb,Organizador de Gaveta,Casa,Electrolux,BASICO,True,6,11,1898.10,316.35,80,15
+prd_02dd786968a0,HD Externo 1TB,Eletrônicos,Adidas,BASICO,True,4,8,1883.17,470.79,81,6
+prd_f7ed5522d23e,Macacão Feminino,Moda,Samsung,BASICO,True,5,8,1858.16,371.63,82,10
+prd_9a3dfc23b7a3,Relógio Analógico,Acessórios,Mondial,BASICO,True,13,18,1840.95,141.61,83,9
+prd_e3934c71bd0c,Meia Esportiva,Esporte,Sony,BASICO,True,5,5,1822.33,364.47,84,5
+prd_92c4758afec3,Vestido Floral,Moda,Arno,BASICO,True,4,6,1776.14,444.04,85,11
+prd_1e4ccab8af1a,Máscara Facial,Beleza,Apple,BASICO,True,10,16,1740.06,174.01,86,6
+prd_bf94f6ee7033,Mochila Esportiva,Esporte,Sony,BASICO,True,11,22,1660.84,150.99,87,6
+prd_6343e70ed4b9,Sérum Vitamina C,Beleza,Xiaomi,BASICO,True,9,11,1626.40,180.71,88,7
+prd_47a25ae10c23,Soundbar TV,Áudio,Acer,BASICO,True,16,19,1610.71,100.67,89,6
+prd_9adbaa3083e1,Jaqueta Jeans,Moda,Sony,BASICO,True,12,18,1608.19,134.02,90,12
+prd_55776d3e5c2a,Garrafa Esportiva,Esporte,Adidas,BASICO,True,6,9,1572.34,262.06,91,7
+prd_ea6b930ce9ac,Gravador de Voz,Áudio,Lenovo,BASICO,True,9,10,1569.90,174.43,92,7
+prd_d21486ad974a,Teclado Gamer RGB,Games,Motorola,BASICO,True,4,5,1568.25,392.06,93,9
+prd_803bcbb7ef84,Porta-temperos,Cozinha,Samsung,BASICO,True,10,13,1534.00,153.40,94,15
+prd_ebb0865fc95d,Fone Gamer RGB,Áudio,Arno,BASICO,True,8,9,1522.31,190.29,95,8
+prd_5437b387f602,Webcam 1080p,Informática,LG,BASICO,True,6,7,1515.54,252.59,96,8
+prd_694bd92302c1,Gabinete ATX,Informática,Mondial,BASICO,True,12,16,1491.04,124.25,97,9
+prd_08fc82e8b75d,Persiana Vertical,Casa,Acer,BASICO,True,7,11,1475.51,210.79,98,16
+prd_f79cf82f8ee0,Caixa de Som JBL,Eletrônicos,Mondial,BASICO,True,5,7,1462.35,292.47,99,7
+prd_7a89c1a36f9e,Mesa para Notebook,Informática,Puma,MEDIO,True,3,3,1454.59,484.86,100,10
+prd_6442b103f637,Adaptador HDMI-VGA,Informática,Arno,BASICO,True,5,5,1454.51,290.90,101,11
+prd_40902505f7f1,Fonte PC 500W,Informática,Philips,BASICO,True,3,3,1438.11,479.37,102,12
+prd_1974423eecee,Suporte para Monitor,Informática,LG,BASICO,True,5,9,1414.73,282.95,103,13
+prd_4a5427b33a63,Mouse Pad Gamer,Informática,Sony,BASICO,True,10,18,1412.30,141.23,104,14
+prd_223c9b6a0a76,Luminária de Mesa,Casa,Mondial,BASICO,True,13,18,1377.42,105.96,105,17
+prd_6212ac3178f2,Óculos de Natação,Esporte,Samsung,BASICO,True,6,10,1369.33,228.22,106,8
+prd_2255432fabe7,Marcador de Texto,Acessórios,Nike,BASICO,True,9,12,1361.88,151.32,107,10
+prd_c9b4024b7b9e,Toca-discos USB,Áudio,Mondial,BASICO,True,12,15,1346.52,112.21,108,9
+prd_08611917c0ae,Relógio de Parede,Casa,Adidas,BASICO,True,10,13,1335.47,133.55,109,18
+prd_a3ae425a3edd,Pesos de Pulso,Esporte,Philips,BASICO,True,13,16,1318.64,101.43,110,9
+prd_22f73233f9a5,Notebook Inspiron 15,Eletrônicos,O Boticário,BASICO,True,10,13,1293.54,129.35,111,8
+prd_faf3fd1a4155,Cinto de Couro,Acessórios,Dell,BASICO,True,8,13,1286.20,160.78,112,11
+prd_1b8a6057bb97,Shampoo Anticaspa,Beleza,Sony,BASICO,True,4,4,1263.96,315.99,113,8
+prd_142839b15f63,Vestido Casual,Moda,Xiaomi,BASICO,True,8,13,1248.74,156.09,114,13
+prd_89d76b194110,Travesseiro Ortopédico,Casa,Sony,BASICO,True,4,7,1214.93,303.73,115,19
+prd_fb32df842fbd,Vestido Floral,Moda,Consul,BASICO,True,9,13,1170.54,130.06,116,14
+prd_c50822dc2e7c,Teclado Mecânico RGB,Eletrônicos,Philips,BASICO,True,5,5,1086.35,217.27,117,9
+prd_f1f39e56f84d,Bermuda Tactel,Moda,Motorola,BASICO,True,11,20,1080.55,98.23,118,15
+prd_65c60230d4ed,Base Líquida,Beleza,Asus,BASICO,True,9,11,1073.93,119.33,119,9
+prd_359246d9ed10,SSD 500GB,Eletrônicos,Dell,BASICO,True,8,9,1053.06,131.63,120,10
+prd_815b38747487,Conjunto de Malha,Moda,Brastemp,BASICO,True,6,13,1029.33,171.56,121,16
+prd_3fb63c4ea3c2,Óculos de Sol,Acessórios,Arno,BASICO,True,6,6,998.19,166.37,122,12
+prd_9f5272275347,Marcador de Texto,Acessórios,Sony,BASICO,True,10,17,981.74,98.17,123,13
+prd_84c0492c5dd9,Óculos de Natação,Esporte,Samsung,BASICO,True,7,7,924.00,132.00,124,10
+prd_eea07161e6c8,Brincos de Prata,Acessórios,Electrolux,BASICO,True,9,19,921.01,102.33,125,14
+prd_2365af16d827,Tela Mosquiteira,Casa,Brastemp,BASICO,True,6,6,913.55,152.26,126,20
+prd_3e42ffcc8dd9,Mochila Escolar,Acessórios,Acer,BASICO,True,6,13,886.08,147.68,127,15
+prd_8924837a2a70,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,2,873.80,873.80,128,1
+prd_a17c779dd289,Gravador de Voz,Áudio,Asus,BASICO,True,11,14,869.68,79.06,129,10
+prd_f8e027f417be,Placa Mãe B450,Informática,O Boticário,BASICO,True,4,5,859.26,214.82,130,15
+prd_289cf61bbd5e,Porta-moedas,Acessórios,Consul,BASICO,True,8,8,793.94,99.24,131,16
+prd_1f81bf3405b1,Fonte PC 500W,Informática,O Boticário,BASICO,True,9,13,792.30,88.03,132,16
+prd_0aba258682b7,Vestido Floral,Moda,Adidas,BASICO,True,8,11,783.01,97.88,133,17
+prd_206eacaa3048,Joystick Arcade,Games,Asus,BASICO,True,7,7,772.13,110.30,134,10
+prd_b4a823952be5,Amplificador de Áudio,Áudio,Consul,BASICO,True,10,10,727.91,72.79,135,11
+prd_6ae727ee4463,Placa Mãe B450,Informática,Xiaomi,BASICO,True,9,10,703.00,78.11,136,17
+prd_e55f1f3ae9ad,SSD 500GB,Eletrônicos,Arno,BASICO,True,7,10,701.04,100.15,137,11
+prd_fd4be5bad76d,Colchonete Yoga,Esporte,Sony,BASICO,True,5,5,690.41,138.08,138,11
+prd_93ed035b2e9e,Peneira Inox,Cozinha,Arno,BASICO,True,4,6,678.54,169.64,139,16
+prd_a7c360e156c0,Gabinete ATX,Informática,Motorola,BASICO,True,4,4,662.16,165.54,140,18
+prd_473cb7923d3d,Kit Gamer Completo,Games,Motorola,BASICO,True,5,6,653.91,130.78,141,11
+prd_96fbc500aec1,Edredom Casal,Casa,Asus,BASICO,True,9,11,644.95,71.66,142,21
+prd_e580cb77e94a,Máscara Facial,Beleza,Mondial,BASICO,True,4,6,642.00,160.50,143,10
+prd_dd8079e89b90,Porta-retrato,Casa,Nike,BASICO,True,8,8,641.01,80.13,144,22
+prd_727f175116c6,Bicicleta Ergométrica,Esporte,Apple,BASICO,True,5,10,638.99,127.80,145,12
+prd_4e1abbd002eb,Mochila Esportiva,Esporte,Samsung,BASICO,True,10,14,617.36,61.74,146,13
+prd_474405dcce41,Brincos de Prata,Acessórios,Motorola,BASICO,True,7,9,614.49,87.78,147,17
+prd_a479149bae3b,Edredom Casal,Casa,Electrolux,BASICO,True,4,7,607.13,151.78,148,23
+prd_3805ad8d3d2c,Adaptador HDMI-VGA,Informática,Apple,BASICO,True,4,4,588.16,147.04,149,19
+prd_06c19781c3db,Assadeira de Vidro,Cozinha,Nike,BASICO,True,5,6,585.22,117.04,150,17
+prd_2bf8388221ea,Mouse Gamer RGB,Games,Asus,BASICO,True,9,12,579.88,64.43,151,12
+prd_1649b8a625e4,Fone de Ouvido Bluetooth,Áudio,Adidas,BASICO,True,5,6,564.30,112.86,152,12
+prd_f6a0a3346af9,Carteira de Couro,Acessórios,LG,BASICO,True,2,2,547.80,273.90,153,18
+prd_899bd21840eb,Mixer de Áudio,Áudio,O Boticário,BASICO,True,5,10,540.35,108.07,154,13
+prd_90725b7ac0e8,Espelho de Parede,Casa,Adidas,BASICO,True,5,7,537.13,107.43,155,24
+prd_fce914504522,Headset Gamer 7.1,Games,Brastemp,BASICO,True,4,7,524.93,131.23,156,13
+prd_d51f590876b9,Boné Esportivo,Esporte,O Boticário,BASICO,True,6,9,521.26,86.88,157,14
+prd_d0368e440753,Batom Matte,Beleza,Adidas,BASICO,True,12,15,520.00,43.33,158,11
+prd_76ede0cece8f,Óculos de Natação,Esporte,Lenovo,BASICO,True,7,9,504.60,72.09,159,15
+prd_052f1c397fc6,Carteira de Couro,Acessórios,Philips,BASICO,True,5,7,482.33,96.47,160,19
+prd_0454b1b9fe21,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,2,477.98,477.98,161,2
+prd_3bee9877eb80,Rádio AM/FM,Áudio,Lenovo,BASICO,True,10,11,473.20,47.32,162,14
+prd_b2fdb7f36a3f,Blusa de Algodão,Moda,LG,BASICO,True,7,9,442.46,63.21,163,18
+prd_abc44b46bee1,Sabonete Facial,Beleza,Asus,BASICO,True,3,3,442.21,147.40,164,12
+prd_6742b65088d8,Porta-temperos,Cozinha,Adidas,BASICO,True,6,11,440.89,73.48,165,18
+prd_7af81d9a08ba,Controle PlayStation,Games,O Boticário,BASICO,True,7,9,419.91,59.99,166,14
+prd_951e09f3ecb1,Chaveiro Personalizado,Acessórios,LG,BASICO,True,5,8,411.52,82.30,167,20
+prd_007af8c5fb0e,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,2,399.58,399.58,168,3
+prd_b09d96e599b3,Marcador de Texto,Acessórios,Asus,BASICO,True,2,2,397.60,198.80,169,21
+prd_6f0a4eefed22,Faqueiro Inox 12 Peças,Cozinha,Apple,BASICO,True,6,10,393.90,65.65,170,19
+prd_3dd1d39581ca,Halteres Ajustáveis,Esporte,Asus,BASICO,True,6,8,389.47,64.91,171,16
+prd_3308eb4d2b62,Cobertor de Lã,Casa,Arno,BASICO,True,11,12,385.98,35.09,172,25
+prd_11bf1703f8e9,Caixa de Som Portátil,Áudio,O Boticário,BASICO,True,5,8,374.40,74.88,173,15
+prd_9b6e92e0766c,Casaco de Inverno,Moda,Arno,BASICO,True,9,10,357.19,39.69,174,19
+prd_b4a98acf1a5f,Cardigan de Lã,Moda,LG,BASICO,True,5,10,355.40,71.08,175,20
+prd_ebdebaf4cd37,Edredom Casal,Casa,Xiaomi,BASICO,True,7,9,349.11,49.87,176,26
+prd_11a9489c4c86,Porta-retrato,Casa,Asus,BASICO,True,5,5,348.70,69.74,177,27
+prd_31b74a170d35,Saia Midi,Moda,Consul,BASICO,True,4,5,338.99,84.75,178,21
+prd_74b8e2ff8f97,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,327.90,327.90,179,4
+prd_c9ce9d378723,Processador Intel i5,Informática,Electrolux,BASICO,True,6,8,324.71,54.12,180,20
+prd_6185cee255bc,Caixa de Som 2.1,Áudio,LG,BASICO,True,3,3,318.30,106.10,181,16
+prd_235a85c800bf,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,2,278.98,278.98,182,5
+prd_c708b046fef8,Halteres Ajustáveis,Esporte,Mondial,BASICO,True,4,6,262.20,65.55,183,17
+prd_d205de276c20,Raquete de Tênis,Esporte,Sony,BASICO,True,4,4,253.46,63.37,184,18
+prd_8dcaa6bdfbb9,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,238.99,238.99,185,6
+prd_8fa1119d3982,Roteador Wi-Fi 6,Eletrônicos,Adidas,BASICO,True,4,6,231.42,57.86,186,12
+prd_c366b8673062,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,223.19,223.19,187,7
+prd_ab011325c1be,Suporte para Controle,Games,Samsung,BASICO,True,5,7,220.73,44.15,188,15
+prd_cb9e965f2314,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,202.82,202.82,189,8
+prd_5ae195cb554b,Microfone para Stream,Games,Samsung,BASICO,True,2,3,175.50,87.75,190,16
+prd_7edb1c123c6a,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,172.90,172.90,191,9
+prd_931ff6d38056,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,147.89,147.89,192,10
+prd_e772a9cda46d,Blusa de Algodão,Moda,LG,BASICO,True,4,4,138.37,34.59,193,22
+prd_3d2453a6e728,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,2,134.10,134.10,194,11
+prd_35a61bfe666d,Teclado Mecânico RGB,Eletrônicos,Xiaomi,BASICO,True,2,2,111.98,55.99,195,13
+prd_84adbd000991,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,106.00,106.00,196,12
+prd_ef1a185da3aa,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,105.21,105.21,197,13
+prd_91cfa7eada76,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,100.99,100.99,198,14
+prd_65574e733561,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,97.90,97.90,199,15
+prd_0b790b565ff2,Mixer de Áudio,Áudio,Sony,BASICO,True,1,1,91.79,91.79,200,17
+prd_7f61cfa619e3,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,87.90,87.90,201,16
+prd_2b1b2e2c60e1,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,85.90,85.90,202,17
+prd_b161f952f659,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,77.90,77.90,203,18
+prd_59109bac228a,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,73.09,73.09,204,19
+prd_b3d5d6aac3ff,Produto não cadastrado,Não cadastrado,Não cadastrado,,False,1,1,26.99,26.99,205,20

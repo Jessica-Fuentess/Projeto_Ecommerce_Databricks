@@ -1,0 +1,89 @@
+{
+  "type": "struct",
+  "fields": [
+    {
+      "name": "id_produto",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "id_venda",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "data_venda",
+      "type": "timestamp",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "id_cliente",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "canal_venda",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "quantidade",
+      "type": "long",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "preco_unitario",
+      "type": "decimal(10,2)",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "receita",
+      "type": "decimal(10,2)",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "data",
+      "type": "date",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "hora",
+      "type": "integer",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "dia_semana_num",
+      "type": "integer",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "dia_semana",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "produto_cadastrado",
+      "type": "boolean",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "venda_antes_do_cadastro",
+      "type": "boolean",
+      "nullable": true,
+      "metadata": {}
+    }
+  ]
+}

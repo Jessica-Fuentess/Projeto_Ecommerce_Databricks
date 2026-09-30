@@ -1,0 +1,77 @@
+{
+  "type": "struct",
+  "fields": [
+    {
+      "name": "data",
+      "type": "date",
+      "nullable": true,
+      "metadata": {
+        "comment": "Data da venda (sem hor\u00e1rio)."
+      }
+    },
+    {
+      "name": "dia_semana",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "comment": "Dia da semana em portugu\u00eas: Domingo, Segunda, Ter\u00e7a, Quarta, Quinta, Sexta, S\u00e1bado."
+      }
+    },
+    {
+      "name": "dia_semana_num",
+      "type": "integer",
+      "nullable": true,
+      "metadata": {
+        "comment": "N\u00famero do dia da semana para ordena\u00e7\u00e3o: 1 = Domingo ... 7 = S\u00e1bado."
+      }
+    },
+    {
+      "name": "hora",
+      "type": "integer",
+      "nullable": true,
+      "metadata": {
+        "comment": "Hora do dia da venda, de 0 a 23."
+      }
+    },
+    {
+      "name": "canal_venda",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "comment": "Canal da venda: ecommerce (site) ou loja_fisica."
+      }
+    },
+    {
+      "name": "total_vendas",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "comment": "Quantidade de vendas (pedidos). Somar para totalizar."
+      }
+    },
+    {
+      "name": "itens_vendidos",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "comment": "Quantidade de unidades vendidas. Somar para totalizar."
+      }
+    },
+    {
+      "name": "receita",
+      "type": "decimal(20,2)",
+      "nullable": true,
+      "metadata": {
+        "comment": "Receita bruta em reais (R$) = quantidade \u00d7 pre\u00e7o unit\u00e1rio. Somar para totalizar."
+      }
+    },
+    {
+      "name": "clientes_unicos",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "comment": "Clientes distintos NAQUELA linha (dia, hora, canal). N\u00e3o somar entre linhas: para clientes \u00fanicos no per\u00edodo use gold.clientes_segmentacao."
+      }
+    }
+  ]
+}

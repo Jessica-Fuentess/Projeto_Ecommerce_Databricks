@@ -1,0 +1,101 @@
+{
+  "type": "struct",
+  "fields": [
+    {
+      "name": "id_produto",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "comment": "Identificador do produto (prefixo prd_)."
+      }
+    },
+    {
+      "name": "nome_produto",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "comment": "Nome do produto. Aten\u00e7\u00e3o: produtos diferentes podem ter o mesmo nome; use id_produto para contar produtos."
+      }
+    },
+    {
+      "name": "categoria",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "comment": "Categoria do produto, por exemplo Eletr\u00f4nicos, Casa, Cozinha, T\u00eanis, \u00c1udio, Games."
+      }
+    },
+    {
+      "name": "marca",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "comment": "Marca do produto."
+      }
+    },
+    {
+      "name": "faixa_preco",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "comment": "Faixa de pre\u00e7o do produto: PREMIUM (acima de R$ 1.000), MEDIO (R$ 500,01 a R$ 1.000) ou BASICO (at\u00e9 R$ 500)."
+      }
+    },
+    {
+      "name": "produto_cadastrado",
+      "type": "boolean",
+      "nullable": true,
+      "metadata": {
+        "comment": "false quando a venda \u00e9 de um produto que n\u00e3o existe no cat\u00e1logo (problema de qualidade de dados)."
+      }
+    },
+    {
+      "name": "total_vendas",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "comment": "Quantidade de vendas (pedidos) do produto."
+      }
+    },
+    {
+      "name": "itens_vendidos",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "comment": "Unidades vendidas do produto."
+      }
+    },
+    {
+      "name": "receita",
+      "type": "decimal(20,2)",
+      "nullable": true,
+      "metadata": {
+        "comment": "Receita bruta do produto em reais (R$)."
+      }
+    },
+    {
+      "name": "ticket_medio",
+      "type": "decimal(11,2)",
+      "nullable": true,
+      "metadata": {
+        "comment": "Receita m\u00e9dia por venda do produto, em reais (R$)."
+      }
+    },
+    {
+      "name": "ranking_receita",
+      "type": "integer",
+      "nullable": true,
+      "metadata": {
+        "comment": "Posi\u00e7\u00e3o do produto no ranking geral de receita (1 = maior receita)."
+      }
+    },
+    {
+      "name": "ranking_na_categoria",
+      "type": "integer",
+      "nullable": true,
+      "metadata": {
+        "comment": "Posi\u00e7\u00e3o do produto no ranking de receita dentro da pr\u00f3pria categoria (1 = maior)."
+      }
+    }
+  ]
+}

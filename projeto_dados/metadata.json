@@ -1,0 +1,88 @@
+{
+  "catalog": "projeto_dados",
+  "export_timestamp": "2026-09-29T00:28:02.804583",
+  "schemas": {
+    "bronze": {
+      "tables": [
+        {
+          "name": "clientes",
+          "row_count": 50,
+          "columns": 5
+        },
+        {
+          "name": "preco_competidores",
+          "row_count": 728,
+          "columns": 4
+        },
+        {
+          "name": "produtos",
+          "row_count": 215,
+          "columns": 6
+        },
+        {
+          "name": "vendas",
+          "row_count": 3020,
+          "columns": 7
+        }
+      ]
+    },
+    "silver": {
+      "tables": [
+        {
+          "name": "clientes",
+          "row_count": 50,
+          "columns": 8
+        },
+        {
+          "name": "preco_competidores",
+          "row_count": 728,
+          "columns": 5
+        },
+        {
+          "name": "produtos",
+          "row_count": 215,
+          "columns": 7
+        },
+        {
+          "name": "vendas",
+          "row_count": 3020,
+          "columns": 14
+        }
+      ]
+    },
+    "gold": {
+      "tables": [
+        {
+          "name": "clientes_segmentacao",
+          "row_count": 50,
+          "columns": 12
+        },
+        {
+          "name": "precos_competitividade",
+          "row_count": 215,
+          "columns": 15
+        },
+        {
+          "name": "qualidade_dados",
+          "row_count": 7,
+          "columns": 5
+        },
+        {
+          "name": "vendas_detalhadas",
+          "row_count": 3020,
+          "columns": 22
+        },
+        {
+          "name": "vendas_produtos",
+          "row_count": 205,
+          "columns": 12
+        },
+        {
+          "name": "vendas_temporais",
+          "row_count": 908,
+          "columns": 9
+        }
+      ]
+    }
+  }
+}
