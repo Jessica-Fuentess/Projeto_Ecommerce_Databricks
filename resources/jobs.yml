@@ -3,24 +3,49 @@ resources:
     job_lakehouse_diario:
       name: "Lakehouse E-commerce - Atualização Diária"
 
-      # Schedule: Segunda a sexta, 6h da manhã (horário de Brasília UTC-3)
+      # Schedule: Segunda a sexta, 6h da manhã (horário de Brasília)
       schedule:
         quartz_cron_expression: "0 0 6 ? * MON-FRI"
         timezone_id: "America/Sao_Paulo"
         pause_status: PAUSED
 
       # Timeout e retries
-      timeout_seconds: 3600  # 1 hora
+      timeout_seconds: 3600
       max_concurrent_runs: 1
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "2"
 
       # Tasks
       tasks:
+        - task_key: ingestao_bronze
+          spark_python_task:
+            python_file: ../src/bronze/ingest.py
+            parameters:
+              - "--data-path"
+              - "file:${workspace.file_path}/data"
+              - "--catalog"
+              - "${var.catalogo}"
+          environment_key: default
+          timeout_seconds: 1800
+
         - task_key: executar_pipeline
+          depends_on:
+            - task_key: ingestao_bronze
           pipeline_task:
             pipeline_id: ${resources.pipelines.pipeline_ecommerce.id}
             full_refresh: false
-
           timeout_seconds: 3600
+        
+        - task_key: testes_qualidade
+          depends_on:
+            - task_key: executar_pipeline
+          spark_python_task:
+            python_file: ../tests/testes_qualidade.py
+          environment_key: default
+          timeout_seconds: 1800
 
       # Tags
       tags:

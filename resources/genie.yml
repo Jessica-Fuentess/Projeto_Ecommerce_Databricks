@@ -1,22 +1,14 @@
 resources:
   genie_spaces:
     genie_diretoria:
-      display_name: "Diretoria E-commerce 2026"
+      title: "Diretoria E-commerce 2026"
+
       description: |
         Pergunte em português sobre vendas, clientes e preços da concorrência.
-        Dados de projeto_dados.gold, atualizados todo dia às 6h.
+        Dados de projeto_dados.gold.
 
-      # Configuração do space exportada
-      # IMPORTANTE: O JSON contém IDs fixos de tabelas (projeto_dados.gold.*)
-      content:
-        type: "SERIALIZED_SPACE"
-        serialized_space_file: ../genie/diretoria_ecommerce.geniespace.json
+      # Definição serializada do Genie Space
+      file_path: ../genie/diretoria_ecommerce.geniespace.json
 
-      # Warehouse para executar as queries
+      # SQL Warehouse utilizado para executar as consultas
       warehouse_id: ${resources.sql_warehouses.serverless_warehouse.id}
-
-      # O space roda com as credenciais de quem pergunta (VIEWER)
-      run_as: "VIEWER"
-
-      # O Space ID é gerado pelo Databricks após o deploy.
-      # O ID utilizado pelo dashboard deve ser atualizado quando necessário.

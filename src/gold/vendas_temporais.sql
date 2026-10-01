@@ -16,7 +16,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.vendas_temporais (
   total_vendas    BIGINT        COMMENT 'Quantidade de vendas (pedidos). Somar para totalizar.',
   itens_vendidos  BIGINT        COMMENT 'Quantidade de unidades vendidas. Somar para totalizar.',
   receita         DECIMAL(20,2) COMMENT 'Receita bruta em reais (R$) = quantidade × preço unitário. Somar para totalizar.',
-  clientes_unicos BIGINT        COMMENT 'Clientes distintos NAQUELA linha (dia, hora, canal). Não somar entre linhas: para clientes únicos no período use gold.clientes_segmentacao.'
+  clientes_unicos BIGINT        COMMENT 'Clientes distintos naquela linha (dia, hora, canal). Não somar entre linhas. Para clientes únicos no período, usar COUNT(DISTINCT id_cliente) sobre a tabela de vendas.'
 )
 COMMENT 'Vendas agregadas por dia, hora e canal.'
 AS

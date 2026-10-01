@@ -3,8 +3,7 @@ from pyspark.sql import functions as F
 
 DINHEIRO = "decimal(10,2)"
 
-# Abaixo de 60% do nosso preço: nenhum concorrente legítimo aparece nessa faixa
-# (os demais ficam entre 92% e 110%).
+# Preços abaixo de 60% do nosso preço são marcados para validação.
 LIMITE_SUSPEITO = 0.6
 
 @dp.materialized_view(comment="Preço de cada concorrente por produto, com marcação de preço suspeito.")

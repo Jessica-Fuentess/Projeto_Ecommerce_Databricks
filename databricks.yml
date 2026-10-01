@@ -1,5 +1,6 @@
 bundle:
   name: projeto_dados_lakehouse
+  engine: direct
 
 variables:
   catalogo:
@@ -14,14 +15,13 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://...
+      host: "https://dbc-b7666745-6272.cloud.databricks.com"  # substituir 'dbc-b7666745-6272' pelo endereço do workspace
     variables:
       catalogo: projeto_dados
 
-  prod:
+  prod: # prod é uma configuração demonstrativa
     mode: production
     workspace:
-      host: https://...
-
+      host: "https://dbc-b7666745-6272.cloud.databricks.com"
     variables:
       catalogo: projeto_dados

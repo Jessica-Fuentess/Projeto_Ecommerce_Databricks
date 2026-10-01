@@ -1,11 +1,25 @@
-CREATE MATERIALIZED VIEW `projeto_dados`.`gold`.`qualidade_dados` (
-  regra STRING COLLATE UTF8_BINARY COMMENT 'Descrição da regra de qualidade verificada.',
-  tabela STRING COLLATE UTF8_BINARY COMMENT 'Tabela silver onde a regra é verificada.',
-  severidade STRING COLLATE UTF8_BINARY COMMENT 'ALERTA (resolver na origem), INFORMATIVO (muda a leitura dos números) ou CORRIGIDO (a silver já trata).',
-  linhas_afetadas BIGINT COMMENT 'Quantidade de linhas da tabela que caem na regra.',
-  receita_afetada DECIMAL(20,2) COMMENT 'Receita em reais (R$) das vendas afetadas. Vazia quando a regra não envolve vendas.')
-COMMENT 'Placar de qualidade dos dados: uma linha por regra, com quantas linhas e quanta receita cada problema afeta. Use para perguntas sobre confiabilidade dos números, vendas de produtos não cadastrados e preços suspeitos de concorrentes.'
-AS SELECT
+-- Gold · qualidade dos dados (todas as diretorias)
+-- Grão: uma linha por regra de qualidade.
+--
+-- As expectations da silver medem os problemas a cada execução, mas essas métricas ficam no
+-- event log do pipeline, que o diretor não abre. Esta tabela consolida indicadores de qualidade para consumo analítico
+-- e pode ser utilizada futuramente no dashboard ou no Genie: "quanto da receita tem problema de cadastro?".
+--
+-- Severidade:
+--   ALERTA       problema real que alguém precisa resolver na origem
+--   INFORMATIVO  característica do dado que muda a leitura dos números
+--   CORRIGIDO    a silver já trata; a linha registra quantas vezes aconteceu
+
+CREATE OR REFRESH MATERIALIZED VIEW gold.qualidade_dados (
+  regra           STRING        COMMENT 'Descrição da regra de qualidade verificada.',
+  tabela          STRING        COMMENT 'Tabela silver onde a regra é verificada.',
+  severidade      STRING        COMMENT 'ALERTA (resolver na origem), INFORMATIVO (muda a leitura dos números) ou CORRIGIDO (a silver já trata).',
+  linhas_afetadas BIGINT        COMMENT 'Quantidade de linhas da tabela que caem na regra.',
+  receita_afetada DECIMAL(20,2) COMMENT 'Receita em reais (R$) das vendas afetadas. Vazia quando a regra não envolve vendas.'
+)
+COMMENT 'Placar de qualidade dos dados: uma linha por regra, com quantas linhas e quanta receita cada problema afeta.'
+AS
+SELECT
   'Venda de produto não cadastrado' AS regra,
   'silver.vendas'                   AS tabela,
   'ALERTA'                          AS severidade,
@@ -60,4 +74,4 @@ UNION ALL
 
 SELECT 'Nome de cliente com pronome de tratamento', 'silver.clientes', 'CORRIGIDO', COUNT(*), CAST(NULL AS DECIMAL(20,2))
 FROM silver.clientes
-WHERE nome_original RLIKE '^(Sr|Sra|Srta|Dr|Dra)[.] '
+WHERE nome_original RLIKE '^(Sr|Sra|Srta|Dr|Dra)[.] ';

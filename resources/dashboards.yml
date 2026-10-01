@@ -4,7 +4,7 @@ resources:
       display_name: "Diretoria E-commerce - Visão Gold"
 
       # Caminho do arquivo serializado do dashboard
-      serialized_dashboard: ../dashboard/diretoria_ecommerce.lvdash.json
+      serialized_dashboard: ../dashboards/diretoria_ecommerce.lvdash.json
 
       # Warehouse para execução das queries
       warehouse_id: ${resources.sql_warehouses.serverless_warehouse.id}
@@ -15,7 +15,7 @@ resources:
   # Warehouse serverless para os dashboards e Genie
   sql_warehouses:
     serverless_warehouse:
-      # Lookup do warehouse existente por nome
+      # Warehouse SQL gerenciado pelo Bundle
       name: "Serverless Starter Warehouse"
 
       cluster_size: "Small"

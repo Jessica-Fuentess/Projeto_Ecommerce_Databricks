@@ -4,7 +4,7 @@
 -- As outras golds são agregadas para responder rápido as perguntas de cada diretoria. Esta aqui
 -- junta tudo o que descreve uma venda (produto, cliente, região, segmento), para as perguntas
 -- que cruzam diretorias: "receita por região e categoria", "quanto os VIPs compram no site".
--- O dashboard usa esta tabela nos filtros cruzados e o Genie a usa quando nenhuma agregada serve.
+-- O Genie utiliza esta tabela para perguntas que cruzam dimensões e que não são atendidas pelas tabelas Gold agregadas.
 
 CREATE OR REFRESH MATERIALIZED VIEW gold.vendas_detalhadas (
   id_venda                STRING        COMMENT 'Identificador da venda (prefixo sal_). Uma linha por venda.',

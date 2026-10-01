@@ -1,0 +1,288 @@
+{
+  "config": {
+    "sample_questions": [
+      {
+        "id": "0185652a8eb0a74ef3d0e557736ddf24",
+        "question": [
+          "Qual categoria está mais cara que o mercado?"
+        ]
+      },
+      {
+        "id": "05d1a7d59ec433ecb3ee764a1003d451",
+        "question": [
+          "Qual foi a receita total do período?"
+        ]
+      },
+      {
+        "id": "481266223a5ecbf63139902fe862234b",
+        "question": [
+          "Qual canal vende mais: e-commerce ou loja física?"
+        ]
+      },
+      {
+        "id": "4f2e5a3c557a41f7b115a157f6ac82aa",
+        "question": [
+          "Quem são os 10 melhores clientes?"
+        ]
+      },
+      {
+        "id": "915950fc5fb1666612655cccd81f1e9d",
+        "question": [
+          "Quais produtos estão mais caros que todos os concorrentes?"
+        ]
+      },
+      {
+        "id": "98ccc476648f906955bdfd48620de51e",
+        "question": [
+          "Quantos clientes VIP temos e quanto eles representam da receita?"
+        ]
+      }
+    ]
+  },
+  "data_sources": {
+    "tables": [
+      {
+        "column_configs": [
+          {
+            "column_name": "estado",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true,
+            "synonyms": [
+              "UF"
+            ]
+          },
+          {
+            "column_name": "regiao",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "segmento_cliente",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true,
+            "synonyms": [
+              "segmento",
+              "perfil",
+              "categoria de cliente"
+            ]
+          }
+        ],
+        "identifier": "projeto_dados.gold.clientes_segmentacao"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "categoria",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "classificacao_preco",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true,
+            "synonyms": [
+              "posição de preço",
+              "competitividade"
+            ]
+          }
+        ],
+        "identifier": "projeto_dados.gold.precos_competitividade"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "canal_venda",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true,
+            "synonyms": [
+              "canal"
+            ]
+          },
+          {
+            "column_name": "categoria",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "receita",
+            "synonyms": [
+              "faturamento"
+            ]
+          },
+          {
+            "column_name": "regiao",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "segmento_cliente",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true,
+            "synonyms": [
+              "segmento",
+              "perfil"
+            ]
+          }
+        ],
+        "identifier": "projeto_dados.gold.vendas_detalhadas"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "categoria",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "marca",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "receita",
+            "synonyms": [
+              "faturamento"
+            ]
+          }
+        ],
+        "identifier": "projeto_dados.gold.vendas_produtos"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "canal_venda",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true,
+            "synonyms": [
+              "canal",
+              "site",
+              "loja"
+            ]
+          },
+          {
+            "column_name": "dia_semana",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "receita",
+            "synonyms": [
+              "faturamento",
+              "vendas em reais",
+              "receita bruta"
+            ]
+          }
+        ],
+        "identifier": "projeto_dados.gold.vendas_temporais"
+      }
+    ]
+  },
+  "instructions": {
+    "example_question_sqls": [
+      {
+        "id": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+        "question": [
+          "Qual o ticket medio por segmento de cliente?"
+        ],
+        "sql": [
+          "SELECT segmento_cliente, COUNT(*) AS clientes, SUM(total_compras) AS vendas, SUM(receita) AS receita, ROUND(SUM(receita) / SUM(total_compras), 2) AS ticket_medio FROM projeto_dados.gold.clientes_segmentacao GROUP BY segmento_cliente ORDER BY receita DESC"
+        ]
+      },
+      {
+        "id": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7",
+        "question": [
+          "Qual a participacao dos TOP_TIER na receita?"
+        ],
+        "sql": [
+          "SELECT COUNT(*) FILTER (WHERE segmento_cliente = 'TOP_TIER') AS clientes_top_tier, SUM(receita) FILTER (WHERE segmento_cliente = 'TOP_TIER') AS receita_top_tier, ROUND(SUM(receita) FILTER (WHERE segmento_cliente = 'TOP_TIER') * 100 / SUM(receita), 1) AS pct_receita FROM projeto_dados.gold.clientes_segmentacao"
+        ]
+      },
+      {
+        "id": "c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8",
+        "question": [
+          "Qual a receita por regiao e categoria?"
+        ],
+        "sql": [
+          "SELECT regiao, categoria, SUM(receita) AS receita FROM projeto_dados.gold.vendas_detalhadas GROUP BY regiao, categoria ORDER BY regiao, receita DESC"
+        ]
+      },
+      {
+        "id": "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9",
+        "question": [
+          "Quantos produtos estao mais caros que a media do mercado?"
+        ],
+        "sql": [
+          "SELECT CASE WHEN possui_preco_suspeito THEN 'a confirmar' ELSE 'confirmado' END AS situacao, COUNT(*) AS produtos FROM projeto_dados.gold.precos_competitividade WHERE diferenca_pct_vs_media > 0 GROUP BY situacao ORDER BY situacao"
+        ]
+      }
+    ],
+    "join_specs": [
+      {
+        "id": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d7",
+        "left": {
+          "alias": "vendas_detalhadas",
+          "identifier": "projeto_dados.gold.vendas_detalhadas"
+        },
+        "right": {
+          "alias": "clientes_segmentacao",
+          "identifier": "projeto_dados.gold.clientes_segmentacao"
+        },
+        "sql": [
+          "`vendas_detalhadas`.`id_cliente` = `clientes_segmentacao`.`id_cliente`",
+          "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+        ]
+      },
+      {
+        "id": "dcd94920c1b4f38fa6f42e3fce3ab52a",
+        "left": {
+          "alias": "vendas_produtos",
+          "identifier": "projeto_dados.gold.vendas_produtos"
+        },
+        "right": {
+          "alias": "precos_competitividade",
+          "identifier": "projeto_dados.gold.precos_competitividade"
+        },
+        "sql": [
+          "`vendas_produtos`.`id_produto` = `precos_competitividade`.`id_produto`",
+          "--rt=FROM_RELATIONSHIP_TYPE_ONE_TO_ONE--"
+        ]
+      }
+    ],
+    "sql_snippets": {
+      "measures": [
+        {
+          "alias": "ticket_medio",
+          "display_name": "Ticket médio",
+          "id": "0d6fda6b3603de8a90194316d53af4b3",
+          "sql": [
+            "SUM(vendas_temporais.receita) / SUM(vendas_temporais.total_vendas)"
+          ],
+          "synonyms": [
+            "valor médio por venda",
+            "ticket"
+          ]
+        }
+      ]
+    },
+    "text_instructions": [
+      {
+        "content": [
+          "Você atende três diretores de um e-commerce brasileiro: Comercial (vendas), Customer Success (clientes) e Pricing (preços). Responda sempre em português do Brasil.\n",
+          "Valores monetários estão em reais (R$). Mostre com duas casas decimais.\n",
+          "Receita = receita bruta (quantidade × preço unitário). Não existe custo, margem ou lucro nos dados: se perguntarem sobre lucro, diga que só há receita.\n",
+          "O período dos dados vai de 13/12/2025 a 11/01/2026 (cerca de 30 dias). \"No mês\", \"no período\" ou \"até agora\" significam o período inteiro. Não use current_date(), porque os dados não chegam até hoje.\n",
+          " Se perguntarem \"hoje\", \"ontem\" ou \"esta semana\", explique em texto que os dados vao ate 11/01/2026 e pergunte se quer ver esse dia.\\nPerguntas de receita, vendas ou ticket médio ao longo do tempo, por dia da semana, hora ou canal: use vendas_temporais. Ticket médio = SUM(receita) / SUM(total_vendas). Nunca some clientes_unicos entre linhas.\n",
+          "Perguntas por produto, categoria ou marca: use vendas_produtos. Para contar produtos use id_produto, porque há produtos diferentes com o mesmo nome.\n",
+          " Para perguntas sobre quantidade de clientes que realizaram compras em um período, use vendas_detalhadas e COUNT(DISTINCT id_cliente). Não conte linhas de clientes_segmentacao para representar clientes que compraram, pois essa tabela contém a carteira de clientes e não apenas as vendas realizadas.\n",
+          "Perguntas sobre clientes, segmentos, estados ou regiões: use clientes_segmentacao. Segmentos: VIP (receita a partir de R$ 22.000), TOP_TIER (R$ 17.000 a R$ 21.999,99), REGULAR (abaixo de R$ 17.000).\n",
+          "Toda contagem de produtos em precos_competitividade traz o total geral (confirmados e suspeitos juntos, sem filtrar por possui_preco_suspeito). Ao lado do total, mencione quantos tem possui_preco_suspeito = true (preco a confirmar) e em quais categorias estao os suspeitos.\\nPerguntas que cruzam dimensões de diretorias diferentes (por exemplo receita por região e categoria, ou canal preferido dos clientes VIP): use vendas_detalhadas, que tem uma linha por venda. Some receita e conte vendas com COUNT(*) ou COUNT(DISTINCT id_venda).\n",
+          "Perguntas sobre confiabilidade dos números: as marcações de qualidade (produto_cadastrado, venda_antes_do_cadastro) estão em vendas_detalhadas e precos_competitividade. possui_preco_suspeito = true em precos_competitividade indica preço de concorrente a confirmar antes de reagir.\n",
+          "Ao comparar dias da semana, a resposta principal é o dia com maior receita média por dia (SUM(receita) / COUNT(DISTINCT data)), ordenado pela média, não pelo total. O período tem 5 sábados e 5 domingos, mas só 4 de cada dia útil: o total de sábado é maior só porque há mais ocorrências no período, não porque vende melhor por dia.\\nCanais: ecommerce (site) e loja_fisica. Ao exibir, escreva \"E-commerce\" e \"Loja física\".\n",
+          "Em rankings, ordene do maior para o menor e limite a 10 linhas, salvo pedido diferente.\\n"
+        ],
+        "id": "5c32917a77a14cff49921093951111cb"
+      }
+    ]
+  },
+  "version": 2
+}

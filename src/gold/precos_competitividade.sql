@@ -24,7 +24,7 @@ CREATE OR REFRESH MATERIALIZED VIEW gold.precos_competitividade (
   receita                   DECIMAL(20,2) COMMENT 'Receita do produto no período, em reais (R$). Zero se nunca vendeu.',
   itens_vendidos            BIGINT        COMMENT 'Unidades vendidas do produto no período.'
 )
-COMMENT 'Nosso preço comparado ao de 4 concorrentes (Mercado Livre, Amazon, Magalu e Shopee), uma linha por produto monitorado.'
+COMMENT 'Nosso preço comparado a até 4 concorrentes (Mercado Livre, Amazon, Magalu e Shopee), uma linha por produto monitorado.'
 AS
 WITH mercado AS (
   SELECT

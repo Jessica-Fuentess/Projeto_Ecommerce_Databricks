@@ -8,9 +8,9 @@ Testa integridade, completude, consistência e valores esperados.
 """
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, count, sum as sql_sum, avg, round as sql_round, abs as sql_abs
+from pyspark.sql.functions import col, sum as sql_sum, round as sql_round, abs as sql_abs
 from datetime import datetime
-from typing import Dict, List
+from typing import List
 
 # ========================================
 # CONFIGURAÇÃO
@@ -26,7 +26,7 @@ EXPECTED_VALUES = {
     "total_clientes": 50,
     "clientes_vip": 10,
     "receita_vip": 262806.22,
-    "produtos_monitored": 215,
+    "produtos_monitorados": 215,
     "produtos_mais_caros_todos": 35,
     "total_linhas_vendas_temporais": 908
 }
@@ -96,10 +96,54 @@ class TestesQualidadeDados:
     def assert_positive(self, nome: str, df, colunas: List[str]):
         """Valida que colunas numéricas são positivas."""
         for coluna in colunas:
-            negativos = df.filter(col(coluna) < 0).count()
-            passou = negativos == 0
-            msg = f"Coluna '{coluna}': {negativos} valores negativos"
+            invalidos = df.filter(col(coluna) <= 0).count()
+            passou = invalidos == 0
+            msg = f"Coluna '{coluna}': {invalidos} valores inválidos (<= 0)"
             self.registrar_resultado(f"{nome} - {coluna}", passou, msg)
+
+    def assert_schema(
+        self,
+        nome: str,
+        df,
+        colunas_esperadas: dict[str, str]
+    ):
+        """Valida nomes e tipos das colunas."""
+
+        colunas_atuais = {
+            campo.name: campo.dataType.simpleString()
+            for campo in df.schema.fields
+        }
+
+        # Verifica presença das colunas
+        colunas_faltantes = sorted(
+            set(colunas_esperadas) - set(colunas_atuais)
+        )
+
+        self.assert_equal(
+            f"{nome}: colunas obrigatórias",
+            colunas_faltantes,
+            [],
+            f"Colunas faltantes: {colunas_faltantes}"
+        )
+
+        # Verifica tipos
+        tipos_invalidos = {}
+
+        for coluna, tipo_esperado in colunas_esperadas.items():
+            tipo_atual = colunas_atuais.get(coluna)
+
+            if tipo_atual != tipo_esperado:
+                tipos_invalidos[coluna] = {
+                    "esperado": tipo_esperado,
+                    "obtido": tipo_atual,
+                }
+
+        self.assert_equal(
+            f"{nome}: tipos das colunas",
+            tipos_invalidos,
+            {},
+            f"Tipos incorretos: {tipos_invalidos}"
+        )
 
     # ========================================
     # TESTES: VENDAS TEMPORAIS
@@ -273,7 +317,7 @@ class TestesQualidadeDados:
         self.assert_equal(
             "precos_competitividade: produtos monitorados",
             count_produtos,
-            EXPECTED_VALUES["produtos_monitored"]
+            EXPECTED_VALUES["produtos_monitorados"]
         )
 
         # Produtos mais caros que todos
@@ -352,18 +396,56 @@ class TestesQualidadeDados:
             f"Vendas sem cliente correspondente: {vendas_sem_cliente}"
         )
 
-        # Integridade referencial: produtos
-        df_produtos = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_produtos")
-        vendas_sem_produto = df.join(
-            df_produtos,
-            df.id_produto == df_produtos.id_produto,
-            "left_anti"
-        ).count()
+        # Integridade referencial: produtos cadastrados
+        df_produtos = self.spark.table(
+            f"{CATALOG}.silver.produtos"
+        )
+
+        vendas_registradas_sem_catalogo = (
+            df
+            .filter(col("produto_cadastrado"))
+            .join(
+                df_produtos,
+                df.id_produto == df_produtos.id_produto,
+                "left_anti"
+            )
+            .count()
+        )
+
         self.assert_equal(
-            "vendas_detalhadas: integridade produtos",
-            vendas_sem_produto,
+            "vendas_detalhadas: produtos cadastrados existem no catálogo",
+            vendas_registradas_sem_catalogo,
             0,
-            f"Vendas sem produto correspondente: {vendas_sem_produto}"
+            (
+                "Vendas marcadas como cadastradas sem produto correspondente "
+                f"no catálogo: {vendas_registradas_sem_catalogo}"
+            )
+        )
+
+        # Produtos não cadastrados devem permanecer na Gold
+        vendas_nao_cadastradas = (
+            df
+            .filter(~col("produto_cadastrado"))
+            .count()
+        )
+
+        vendas_nao_cadastradas_silver = (
+            self.spark
+            .table(f"{CATALOG}.silver.vendas")
+            .filter(~col("produto_cadastrado"))
+            .count()
+        )
+
+        self.assert_equal(
+            "vendas_detalhadas: preservação de vendas sem produto cadastrado",
+            vendas_nao_cadastradas,
+            vendas_nao_cadastradas_silver,
+            (
+                "Gold: "
+                f"{vendas_nao_cadastradas}; "
+                "Silver: "
+                f"{vendas_nao_cadastradas_silver}"
+            )
         )
 
     # ========================================
@@ -409,6 +491,448 @@ class TestesQualidadeDados:
         )
 
     # ========================================
+    # TESTES: SCHEMA GOLD
+    # ========================================
+
+    def teste_schemas_gold(self):
+        """Valida colunas e tipos das tabelas Gold."""
+        print("\n🧱 Testando: schemas Gold")
+
+        schemas_esperados = {
+            "vendas_temporais": {
+                "data": "date",
+                "dia_semana": "string",
+                "dia_semana_num": "int",
+                "hora": "int",
+                "canal_venda": "string",
+                "total_vendas": "bigint",
+                "itens_vendidos": "bigint",
+                "receita": "decimal(20,2)",
+                "clientes_unicos": "bigint",
+            },
+
+            "clientes_segmentacao": {
+                "id_cliente": "string",
+                "nome_cliente": "string",
+                "estado": "string",
+                "nome_estado": "string",
+                "regiao": "string",
+                "total_compras": "bigint",
+                "receita": "decimal(20,2)",
+                "ticket_medio": "decimal(11,2)",
+                "primeira_compra": "date",
+                "ultima_compra": "date",
+                "segmento_cliente": "string",
+                "ranking_receita": "int",
+            },
+
+            "vendas_detalhadas": {
+                "id_venda": "string",
+                "data_venda": "timestamp",
+                "data": "date",
+                "dia_semana": "string",
+                "dia_semana_num": "int",
+                "hora": "int",
+                "canal_venda": "string",
+                "id_produto": "string",
+                "nome_produto": "string",
+                "categoria": "string",
+                "marca": "string",
+                "faixa_preco": "string",
+                "produto_cadastrado": "boolean",
+                "id_cliente": "string",
+                "nome_cliente": "string",
+                "estado": "string",
+                "regiao": "string",
+                "segmento_cliente": "string",
+                "quantidade": "bigint",
+                "preco_unitario": "decimal(10,2)",
+                "receita": "decimal(10,2)",
+                "venda_antes_do_cadastro": "boolean",
+            },
+
+            "precos_competitividade": {
+                "id_produto": "string",
+                "nome_produto": "string",
+                "categoria": "string",
+                "marca": "string",
+                "nosso_preco": "decimal(10,2)",
+                "preco_medio_concorrentes": "decimal(12,2)",
+                "preco_minimo_concorrentes": "decimal(10,2)",
+                "preco_maximo_concorrentes": "decimal(10,2)",
+                "qtd_concorrentes": "bigint",
+                "classificacao_preco": "string",
+                "diferenca_pct_vs_media": "decimal(10,2)",
+                "possui_preco_suspeito": "boolean",
+                "receita": "decimal(20,2)",
+                "itens_vendidos": "bigint",
+            },
+
+            "qualidade_dados": {
+                "regra": "string",
+                "tabela": "string",
+                "severidade": "string",
+                "linhas_afetadas": "bigint",
+                "receita_afetada": "decimal(20,2)",
+            },
+        }
+
+        for tabela, schema_esperado in schemas_esperados.items():
+            df = self.spark.table(
+                f"{CATALOG}.{SCHEMA_GOLD}.{tabela}"
+            )
+
+            self.assert_schema(
+                f"{tabela}: schema",
+                df,
+                schema_esperado
+            )
+
+    # ========================================
+    # TESTES: CHAVES E GRANULARIDADE
+    # ========================================
+
+    def teste_chaves_e_granularidade(self):
+        """Valida as chaves e granularidades das tabelas Gold."""
+        print("\n🔑 Testando: chaves e granularidade")
+
+        testes = [
+            (
+                "vendas_produtos",
+                ["id_produto"],
+            ),
+            (
+                "clientes_segmentacao",
+                ["id_cliente"],
+            ),
+            (
+                "vendas_detalhadas",
+                ["id_venda"],
+            ),
+            (
+                "precos_competitividade",
+                ["id_produto"],
+            ),
+            (
+                "vendas_temporais",
+                [
+                    "data",
+                    "hora",
+                    "canal_venda",
+                ],
+            ),
+        ]
+
+        for tabela, colunas_chave in testes:
+            df = self.spark.table(
+                f"{CATALOG}.{SCHEMA_GOLD}.{tabela}"
+            )
+
+            duplicados = (
+                df.groupBy(*colunas_chave)
+                .count()
+                .filter(col("count") > 1)
+                .count()
+            )
+
+            self.assert_equal(
+                f"{tabela}: granularidade única",
+                duplicados,
+                0,
+                (
+                    f"Registros duplicados na chave "
+                    f"{colunas_chave}: {duplicados}"
+                )
+            )
+
+    # ========================================
+    # TESTES: COMPLETUDE
+    # ========================================
+
+    def teste_completude_gold(self):
+        """Valida campos obrigatórios sem valores nulos."""
+        print("\n🧹 Testando: completude das tabelas Gold")
+
+        campos_obrigatorios = {
+            "vendas_temporais": [
+                "data",
+                "hora",
+                "canal_venda",
+                "total_vendas",
+                "itens_vendidos",
+                "receita",
+            ],
+
+            "vendas_produtos": [
+                "id_produto",
+                "nome_produto",
+                "categoria",
+                "marca",
+                "total_vendas",
+                "itens_vendidos",
+                "receita",
+            ],
+
+            "clientes_segmentacao": [
+                "id_cliente",
+                "nome_cliente",
+                "estado",
+                "nome_estado",
+                "regiao",
+                "total_compras",
+                "receita",
+                "segmento_cliente",
+                "ranking_receita",
+            ],
+
+            "vendas_detalhadas": [
+                "id_venda",
+                "data_venda",
+                "id_produto",
+                "id_cliente",
+                "canal_venda",
+                "quantidade",
+                "preco_unitario",
+                "receita",
+            ],
+
+            "precos_competitividade": [
+                "id_produto",
+                "nome_produto",
+                "categoria",
+                "marca",
+                "nosso_preco",
+                "preco_medio_concorrentes",
+                "preco_minimo_concorrentes",
+                "preco_maximo_concorrentes",
+                "qtd_concorrentes",
+                "classificacao_preco",
+            ],
+        }
+
+        for tabela, colunas in campos_obrigatorios.items():
+            df = self.spark.table(
+                f"{CATALOG}.{SCHEMA_GOLD}.{tabela}"
+            )
+
+            self.assert_not_null(
+                f"{tabela}: completude",
+                df,
+                colunas
+            )
+
+    # ========================================
+    # TESTES: REGRAS DE NEGÓCIO
+    # ========================================
+
+    def teste_regras_negocio(self):
+        """Valida regras de negócio das tabelas Gold."""
+        print("\n📐 Testando: regras de negócio")
+
+        # ----------------------------------------
+        # Segmentação de clientes
+        # ----------------------------------------
+
+        clientes = self.spark.table(
+            f"{CATALOG}.{SCHEMA_GOLD}.clientes_segmentacao"
+        )
+
+        segmentos_invalidos = clientes.filter(
+            ~col("segmento_cliente").isin(
+                "VIP",
+                "TOP_TIER",
+                "REGULAR"
+            )
+        ).count()
+
+        self.assert_equal(
+            "clientes_segmentacao: segmentos válidos",
+            segmentos_invalidos,
+            0,
+            f"Segmentos inválidos: {segmentos_invalidos}"
+        )
+
+        # ----------------------------------------
+        # Canais de venda
+        # ----------------------------------------
+
+        vendas = self.spark.table(
+            f"{CATALOG}.{SCHEMA_GOLD}.vendas_detalhadas"
+        )
+
+        canais_invalidos = vendas.filter(
+            ~col("canal_venda").isin(
+                "ecommerce",
+                "loja_fisica"
+            )
+        ).count()
+
+        self.assert_equal(
+            "vendas_detalhadas: canais válidos",
+            canais_invalidos,
+            0,
+            f"Canais inválidos: {canais_invalidos}"
+        )
+
+        # ----------------------------------------
+        # Receita da venda
+        # ----------------------------------------
+
+        vendas_validacao = vendas.withColumn(
+            "receita_calculada",
+            (
+                col("quantidade") *
+                col("preco_unitario")
+            ).cast("decimal(10,2)")
+        )
+
+        receita_inconsistente = vendas_validacao.filter(
+            sql_abs(
+                col("receita") -
+                col("receita_calculada")
+            ) > 0.01
+        ).count()
+
+        self.assert_equal(
+            "vendas_detalhadas: receita consistente",
+            receita_inconsistente,
+            0,
+            (
+                "Vendas com receita diferente de "
+                "quantidade × preço unitário: "
+                f"{receita_inconsistente}"
+            )
+        )
+
+        # ----------------------------------------
+        # Flags booleanas
+        # ----------------------------------------
+
+        flags_invalidas = vendas.filter(
+            col("produto_cadastrado").isNull() |
+            col("venda_antes_do_cadastro").isNull()
+        ).count()
+
+        self.assert_equal(
+            "vendas_detalhadas: flags de qualidade preenchidas",
+            flags_invalidas,
+            0,
+            f"Flags nulas: {flags_invalidas}"
+        )
+
+    # ========================================
+    # TESTES: SCORECARD DE QUALIDADE
+    # ========================================
+
+    def teste_qualidade_dados(self):
+        """Valida o scorecard de qualidade contra as tabelas Silver."""
+        print("\n🛡️ Testando: qualidade_dados")
+
+        qualidade = self.spark.table(
+            f"{CATALOG}.{SCHEMA_GOLD}.qualidade_dados"
+        )
+
+        regras_esperadas = [
+            "Venda de produto não cadastrado",
+            "Venda anterior à criação do produto",
+            "Preço de concorrente abaixo de 60% do nosso",
+            "Marca do produto diferente da marca citada no nome",
+            "Produto com nome igual ao de outro produto",
+            "Produto monitorado em menos de 4 concorrentes",
+            "Nome de cliente com pronome de tratamento",
+        ]
+
+        regras_faltantes = [
+            regra
+            for regra in regras_esperadas
+            if qualidade.filter(
+                col("regra") == regra
+            ).count() == 0
+        ]
+
+        self.assert_equal(
+            "qualidade_dados: regras esperadas",
+            regras_faltantes,
+            [],
+            f"Regras ausentes: {regras_faltantes}"
+        )
+
+        # Venda de produto não cadastrado
+        esperado = (
+            self.spark
+            .table(f"{CATALOG}.silver.vendas")
+            .filter(~col("produto_cadastrado"))
+            .count()
+        )
+
+        obtido = (
+            qualidade
+            .filter(
+                col("regra") ==
+                "Venda de produto não cadastrado"
+            )
+            .select("linhas_afetadas")
+            .collect()[0][0]
+        )
+
+        self.assert_equal(
+            "qualidade_dados: produtos não cadastrados",
+            obtido,
+            esperado,
+            f"Gold: {obtido}, Silver: {esperado}"
+        )
+
+        # Venda anterior à criação do produto
+        esperado = (
+            self.spark
+            .table(f"{CATALOG}.silver.vendas")
+            .filter(col("venda_antes_do_cadastro"))
+            .count()
+        )
+
+        obtido = (
+            qualidade
+            .filter(
+                col("regra") ==
+                "Venda anterior à criação do produto"
+            )
+            .select("linhas_afetadas")
+            .collect()[0][0]
+        )
+
+        self.assert_equal(
+            "qualidade_dados: vendas anteriores ao cadastro",
+            obtido,
+            esperado,
+            f"Gold: {obtido}, Silver: {esperado}"
+        )
+
+        # Preços suspeitos
+        esperado = (
+            self.spark
+            .table(f"{CATALOG}.silver.preco_competidores")
+            .filter(col("preco_suspeito"))
+            .count()
+        )
+
+        obtido = (
+            qualidade
+            .filter(
+                col("regra") ==
+                "Preço de concorrente abaixo de 60% do nosso"
+            )
+            .select("linhas_afetadas")
+            .collect()[0][0]
+        )
+
+        self.assert_equal(
+            "qualidade_dados: preços suspeitos",
+            obtido,
+            esperado,
+            f"Gold: {obtido}, Silver: {esperado}"
+        )
+
+    # ========================================
     # EXECUÇÃO E RELATÓRIO
     # ========================================
 
@@ -423,12 +947,22 @@ class TestesQualidadeDados:
         print("=" * 70)
 
         # Executar testes
+        # Testes existentes
         self.teste_vendas_temporais_estrutura()
         self.teste_vendas_produtos_estrutura()
         self.teste_clientes_segmentacao()
         self.teste_precos_competitividade()
         self.teste_vendas_detalhadas_integridade()
         self.teste_consistencia_cross_table()
+
+        # Testes estruturais
+        self.teste_schemas_gold()
+        self.teste_chaves_e_granularidade()
+        self.teste_completude_gold()
+
+        # Testes de regras
+        self.teste_regras_negocio()
+        self.teste_qualidade_dados()
 
         # Relatório final
         print("\n" + "=" * 70)

@@ -1,8 +1,0 @@
-regra,tabela,severidade,linhas_afetadas,receita_afetada
-Venda de produto não cadastrado,silver.vendas,ALERTA,20,4240.01
-Venda anterior à criação do produto,silver.vendas,ALERTA,5,325.88
-Preço de concorrente abaixo de 60% do nosso,silver.preco_competidores,ALERTA,55,
-Marca do produto diferente da marca citada no nome,silver.produtos,ALERTA,12,
-Produto com nome igual ao de outro produto,silver.produtos,INFORMATIVO,137,
-Produto monitorado em menos de 4 concorrentes,silver.preco_competidores,INFORMATIVO,109,
-Nome de cliente com pronome de tratamento,silver.clientes,CORRIGIDO,11,
