@@ -11,6 +11,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, sum as sql_sum, round as sql_round, abs as sql_abs
 from datetime import datetime
 from typing import List
+import argparse
 
 # ========================================
 # CONFIGURAÇÃO
@@ -41,8 +42,9 @@ TOLERANCE = 0.01
 class TestesQualidadeDados:
     """Bateria de testes de qualidade para as tabelas Gold."""
 
-    def __init__(self, spark: SparkSession):
+    def __init__(self, spark: SparkSession, catalog: str):
         self.spark = spark
+        self.catalog = catalog
         self.resultados = []
         self.total_testes = 0
         self.testes_passaram = 0
@@ -153,7 +155,7 @@ class TestesQualidadeDados:
         """Testa estrutura e completude de vendas_temporais."""
         print("\n📊 Testando: vendas_temporais")
 
-        df = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_temporais")
+        df = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_temporais")
 
         # Contagem de linhas
         count_linhas = df.count()
@@ -202,7 +204,7 @@ class TestesQualidadeDados:
         """Testa estrutura e agregações de vendas_produtos."""
         print("\n📦 Testando: vendas_produtos")
 
-        df = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_produtos")
+        df = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_produtos")
 
         # Produto único
         duplicados = df.groupBy("id_produto").count().filter(col("count") > 1).count()
@@ -238,7 +240,7 @@ class TestesQualidadeDados:
         """Testa segmentação e regras de negócio de clientes."""
         print("\n👥 Testando: clientes_segmentacao")
 
-        df = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.clientes_segmentacao")
+        df = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.clientes_segmentacao")
 
         # Total de clientes
         count_clientes = df.count()
@@ -310,7 +312,7 @@ class TestesQualidadeDados:
         """Testa lógica de pricing e classificação."""
         print("\n💰 Testando: precos_competitividade")
 
-        df = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.precos_competitividade")
+        df = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.precos_competitividade")
 
         # Total de produtos monitorados
         count_produtos = df.count()
@@ -364,7 +366,7 @@ class TestesQualidadeDados:
         """Testa integridade referencial e agregações."""
         print("\n🔗 Testando: vendas_detalhadas")
 
-        df = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_detalhadas")
+        df = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_detalhadas")
 
         # Total de vendas
         count_vendas = df.count()
@@ -383,7 +385,7 @@ class TestesQualidadeDados:
         )
 
         # Integridade referencial: clientes
-        df_clientes = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.clientes_segmentacao")
+        df_clientes = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.clientes_segmentacao")
         vendas_sem_cliente = df.join(
             df_clientes,
             df.id_cliente == df_clientes.id_cliente,
@@ -398,7 +400,7 @@ class TestesQualidadeDados:
 
         # Integridade referencial: produtos cadastrados
         df_produtos = self.spark.table(
-            f"{CATALOG}.silver.produtos"
+            f"{self.catalog}.silver.produtos"
         )
 
         vendas_registradas_sem_catalogo = (
@@ -431,7 +433,7 @@ class TestesQualidadeDados:
 
         vendas_nao_cadastradas_silver = (
             self.spark
-            .table(f"{CATALOG}.silver.vendas")
+            .table(f"{self.catalog}.silver.vendas")
             .filter(~col("produto_cadastrado"))
             .count()
         )
@@ -457,13 +459,13 @@ class TestesQualidadeDados:
         print("\n🔄 Testando: consistência entre tabelas")
 
         # Receita: vendas_temporais vs vendas_produtos vs vendas_detalhadas
-        receita_temporal = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_temporais") \
+        receita_temporal = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_temporais") \
             .agg(sql_sum("receita")).collect()[0][0]
 
-        receita_produtos = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_produtos") \
+        receita_produtos = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_produtos") \
             .agg(sql_sum("receita")).collect()[0][0]
 
-        receita_detalhadas = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_detalhadas") \
+        receita_detalhadas = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_detalhadas") \
             .agg(sql_sum("receita")).collect()[0][0]
 
         self.assert_close(
@@ -479,10 +481,10 @@ class TestesQualidadeDados:
         )
 
         # Total vendas: vendas_temporais vs vendas_detalhadas
-        vendas_temporal = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_temporais") \
+        vendas_temporal = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_temporais") \
             .agg(sql_sum("total_vendas")).collect()[0][0]
 
-        vendas_detalhadas = self.spark.table(f"{CATALOG}.{SCHEMA_GOLD}.vendas_detalhadas").count()
+        vendas_detalhadas = self.spark.table(f"{self.catalog}.{SCHEMA_GOLD}.vendas_detalhadas").count()
 
         self.assert_equal(
             "cross-table: total vendas temporal vs detalhadas",
@@ -557,12 +559,13 @@ class TestesQualidadeDados:
                 "categoria": "string",
                 "marca": "string",
                 "nosso_preco": "decimal(10,2)",
-                "preco_medio_concorrentes": "decimal(12,2)",
+                "preco_medio_concorrentes": "decimal(11,2)",
                 "preco_minimo_concorrentes": "decimal(10,2)",
                 "preco_maximo_concorrentes": "decimal(10,2)",
-                "qtd_concorrentes": "bigint",
+                "total_concorrentes": "bigint",
+                "diferenca_pct_vs_media": "decimal(19,2)",
+                "diferenca_pct_vs_minimo": "decimal(18,2)",
                 "classificacao_preco": "string",
-                "diferenca_pct_vs_media": "decimal(10,2)",
                 "possui_preco_suspeito": "boolean",
                 "receita": "decimal(20,2)",
                 "itens_vendidos": "bigint",
@@ -579,7 +582,7 @@ class TestesQualidadeDados:
 
         for tabela, schema_esperado in schemas_esperados.items():
             df = self.spark.table(
-                f"{CATALOG}.{SCHEMA_GOLD}.{tabela}"
+                f"{self.catalog}.{SCHEMA_GOLD}.{tabela}"
             )
 
             self.assert_schema(
@@ -625,7 +628,7 @@ class TestesQualidadeDados:
 
         for tabela, colunas_chave in testes:
             df = self.spark.table(
-                f"{CATALOG}.{SCHEMA_GOLD}.{tabela}"
+                f"{self.catalog}.{SCHEMA_GOLD}.{tabela}"
             )
 
             duplicados = (
@@ -705,14 +708,14 @@ class TestesQualidadeDados:
                 "preco_medio_concorrentes",
                 "preco_minimo_concorrentes",
                 "preco_maximo_concorrentes",
-                "qtd_concorrentes",
+                "total_concorrentes",
                 "classificacao_preco",
             ],
         }
 
         for tabela, colunas in campos_obrigatorios.items():
             df = self.spark.table(
-                f"{CATALOG}.{SCHEMA_GOLD}.{tabela}"
+                f"{self.catalog}.{SCHEMA_GOLD}.{tabela}"
             )
 
             self.assert_not_null(
@@ -734,7 +737,7 @@ class TestesQualidadeDados:
         # ----------------------------------------
 
         clientes = self.spark.table(
-            f"{CATALOG}.{SCHEMA_GOLD}.clientes_segmentacao"
+            f"{self.catalog}.{SCHEMA_GOLD}.clientes_segmentacao"
         )
 
         segmentos_invalidos = clientes.filter(
@@ -757,7 +760,7 @@ class TestesQualidadeDados:
         # ----------------------------------------
 
         vendas = self.spark.table(
-            f"{CATALOG}.{SCHEMA_GOLD}.vendas_detalhadas"
+            f"{self.catalog}.{SCHEMA_GOLD}.vendas_detalhadas"
         )
 
         canais_invalidos = vendas.filter(
@@ -829,7 +832,7 @@ class TestesQualidadeDados:
         print("\n🛡️ Testando: qualidade_dados")
 
         qualidade = self.spark.table(
-            f"{CATALOG}.{SCHEMA_GOLD}.qualidade_dados"
+            f"{self.catalog}.{SCHEMA_GOLD}.qualidade_dados"
         )
 
         regras_esperadas = [
@@ -860,7 +863,7 @@ class TestesQualidadeDados:
         # Venda de produto não cadastrado
         esperado = (
             self.spark
-            .table(f"{CATALOG}.silver.vendas")
+            .table(f"{self.catalog}.silver.vendas")
             .filter(~col("produto_cadastrado"))
             .count()
         )
@@ -885,7 +888,7 @@ class TestesQualidadeDados:
         # Venda anterior à criação do produto
         esperado = (
             self.spark
-            .table(f"{CATALOG}.silver.vendas")
+            .table(f"{self.catalog}.silver.vendas")
             .filter(col("venda_antes_do_cadastro"))
             .count()
         )
@@ -910,7 +913,7 @@ class TestesQualidadeDados:
         # Preços suspeitos
         esperado = (
             self.spark
-            .table(f"{CATALOG}.silver.preco_competidores")
+            .table(f"{self.catalog}.silver.preco_competidores")
             .filter(col("preco_suspeito"))
             .count()
         )
@@ -941,7 +944,7 @@ class TestesQualidadeDados:
         print("=" * 70)
         print("🧪 INICIANDO TESTES DE QUALIDADE - PROJETO DADOS LAKEHOUSE")
         print("=" * 70)
-        print(f"Catálogo: {CATALOG}")
+        print(f"Catálogo: {self.catalog}")
         print(f"Schema: {SCHEMA_GOLD}")
         print(f"Data/Hora: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
         print("=" * 70)
@@ -994,13 +997,26 @@ class TestesQualidadeDados:
 # ========================================
 
 if __name__ == "__main__":
-    # Obter SparkSession
+    parser = argparse.ArgumentParser(
+        description="Executa os testes de qualidade das tabelas Gold."
+    )
+
+    parser.add_argument(
+        "--catalog",
+        default=CATALOG,
+        help="Catálogo Unity Catalog onde estão as tabelas do projeto.",
+    )
+
+    args = parser.parse_args()
+
     spark = SparkSession.builder.getOrCreate()
 
-    # Criar e executar testes
-    testes = TestesQualidadeDados(spark)
+    testes = TestesQualidadeDados(
+        spark=spark,
+        catalog=args.catalog,
+    )
+
     sucesso = testes.executar_todos()
 
-    # Exit code para CI/CD
     import sys
     sys.exit(0 if sucesso else 1)

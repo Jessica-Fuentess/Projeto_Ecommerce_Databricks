@@ -97,7 +97,7 @@
               "lines": [
                 "## Diretoria de Vendas\n",
                 "\n",
-                "Quanto vendemos, em qual canal e com quais produtos. Dados de `projeto_dados.gold`, atualizados pelo Job diário."
+                "Quanto vendemos, em qual canal e com quais produtos. Dados de `projeto_dados.gold`, atualizados pelo processo de ingestão e transformação."
               ]
             }
           },
@@ -1532,7 +1532,7 @@
             "name": "fonte",
             "multilineTextboxSpec": {
               "lines": [
-                "*Fonte: projeto_dados.gold · pipeline diário*"
+                "*Fonte: projeto_dados.gold · processo de ingestão e transformação*"
               ]
             }
           },

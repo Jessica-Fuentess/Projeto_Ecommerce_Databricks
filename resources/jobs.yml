@@ -44,6 +44,9 @@ resources:
             - task_key: executar_pipeline
           spark_python_task:
             python_file: ../tests/testes_qualidade.py
+            parameters:
+              - "--catalog"
+              - "${var.catalogo}"
           environment_key: default
           timeout_seconds: 1800
 
