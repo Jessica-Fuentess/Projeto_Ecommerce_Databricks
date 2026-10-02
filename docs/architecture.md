@@ -851,7 +851,8 @@ Projeto_Ecommerce_Databricks/
 │
 ├── docs/
 │   ├── architecture.md
-│   └── genie.md
+│   ├── genie.md
+│   └── TECHNICAL.md
 │
 └── resources/
     ├── pipeline.yml
