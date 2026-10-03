@@ -188,5 +188,4 @@ Projeto_Ecommerce_Databricks/
 `SQL` · `Power BI` · `Python` · `PySpark` · `Databricks` · `Excel` · `Git`
 
 ⭐ Gostou do projeto? Deixe uma estrela no repositório!
-
 </div>
