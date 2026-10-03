@@ -852,6 +852,8 @@ Projeto_Ecommerce_Databricks/
 ├── docs/
 │   ├── architecture.md
 │   ├── genie.md
+│   ├── dashboard-demo.gif
+│   ├── genie-demo.gif
 │   └── TECHNICAL.md
 │
 └── resources/
