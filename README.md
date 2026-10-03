@@ -60,6 +60,32 @@ Orquestração com **Databricks Jobs** (`ingestão → pipeline → testes`) e t
 
 ---
 
+## Demonstração
+
+### 📊 Dashboard executivo (Databricks AI/BI)
+
+<p align="center">
+  <img src="docs/images/dashboard-demo.gif" alt="Demonstração do dashboard executivo" width="800">
+</p>
+
+Três áreas de análise: **Vendas**, **Clientes** e **Preços**. Mais detalhes na [documentação técnica](docs/TECHNICAL.md#5-dashboard-executivo).
+
+### 🤖 Genie: perguntas em linguagem natural
+
+<p align="center">
+  <img src="docs/images/genie-demo.gif" alt="Demonstração do Genie" width="750">
+</p>
+
+- ✅ **12 perguntas de benchmark validadas com 100% de acerto**
+- 🔎 Consultas em linguagem natural sobre as 5 tabelas Gold
+- 📊 Receita, vendas, clientes, produtos e competitividade de preços
+- 📄 Configuração: [`genie/diretoria_ecommerce.geniespace.json`](genie/diretoria_ecommerce.geniespace.json)
+- 📚 Regras e exemplos: [`docs/genie.md`](docs/genie.md)
+
+> 💡 No exemplo acima, a resposta de **R$ 705.486,21** é a receita do **canal e-commerce**. A receita total, somando a loja física, é **R$ 974.077,28**.
+
+---
+
 ## Resultados
 
 <!-- DICA: adicione aqui um print do dashboard.
