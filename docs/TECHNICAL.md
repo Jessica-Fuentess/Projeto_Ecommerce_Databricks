@@ -145,12 +145,23 @@ Arquivo: `dashboards/diretoria_ecommerce.lvdash.json` (Databricks AI/BI), com tr
 
 ## 6. Genie
 
-- Configuração: `genie/diretoria_ecommerce.geniespace.json` · Documentação: `docs/genie.md`
-- Tabelas: `gold.clientes_segmentacao`, `gold.precos_competitividade`, `gold.vendas_detalhadas`, `gold.vendas_produtos`, `gold.vendas_temporais`
-- As instruções definem como calcular clientes únicos, evitando contagem incorreta de linhas.
+- Configuração: [`genie/diretoria_ecommerce.geniespace.json`](../genie/diretoria_ecommerce.geniespace.json)
+- Documentação: [`docs/genie.md`](genie.md)
+- **12 perguntas de benchmark validadas com 100% de acerto**
+- Tabelas utilizadas:
+  - `gold.clientes_segmentacao`
+  - `gold.precos_competitividade`
+  - `gold.vendas_detalhadas`
+  - `gold.vendas_produtos`
+  - `gold.vendas_temporais`
 
-**Exemplos de perguntas:**
-- Qual foi a receita total do e-commerce?
+### Regra de clientes únicos
+
+Para perguntas como "quantos clientes compraram no período?", o Genie usa `COUNT DISTINCT` sobre os identificadores de cliente em `gold.vendas_detalhadas`. Ele não soma a coluna de clientes únicos de `gold.vendas_temporais`, pois isso contaria o mesmo cliente mais de uma vez.
+
+### Exemplos de perguntas validadas (6 das 12)
+
+- Qual foi a receita total do e-commerce? *(retorna o canal e-commerce: R$ 705.486,21; o total com loja física é R$ 974.077,28)*
 - Quais são os 10 produtos com maior receita?
 - Quantos clientes VIP existem?
 - Qual foi a receita por segmento de cliente?
