@@ -89,9 +89,6 @@ Três áreas de análise: **Vendas**, **Clientes** e **Preços**. Mais detalhes 
 
 ## Resultados
 
-<!-- DICA: adicione aqui um print do dashboard.
-![Dashboard](docs/images/dashboard.png) -->
-
 | Indicador | Valor |
 |---|---:|
 | Clientes | 50 |
