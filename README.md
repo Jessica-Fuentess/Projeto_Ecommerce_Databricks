@@ -65,7 +65,7 @@ Orquestração com **Databricks Jobs** (`ingestão → pipeline → testes`) e t
 ### 📊 Dashboard executivo (Databricks AI/BI)
 
 <p align="center">
-  <img src="docs/dashboard-demo.gif" alt="Demonstração do dashboard executivo" width="800">
+  <img src="docs/dashboard-demo.gif" alt="Demonstração do dashboard executivo" width="500">
 </p>
 
 Três áreas de análise: **Vendas**, **Clientes** e **Preços**. Mais detalhes na [documentação técnica](docs/TECHNICAL.md#5-dashboard-executivo).
@@ -73,7 +73,7 @@ Três áreas de análise: **Vendas**, **Clientes** e **Preços**. Mais detalhes 
 ### 🤖 Genie: perguntas em linguagem natural
 
 <p align="center">
-  <img src="docs/genie-demo.gif" alt="Demonstração do Genie" width="750">
+  <img src="docs/genie-demo.gif" alt="Demonstração do Genie" width="450">
 </p>
 
 - ✅ **12 perguntas de benchmark validadas com 100% de acerto**
