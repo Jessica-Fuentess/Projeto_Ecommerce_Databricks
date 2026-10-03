@@ -161,7 +161,7 @@ Projeto_Ecommerce_Databricks/
 ├── tests/                 # testes_qualidade.py
 ├── dashboards/            # dashboard AI/BI (.lvdash.json)
 ├── genie/                 # configuração do Genie space
-├── docs/                  # TECHNICAL.md, architecture.md, genie.md
+├── docs/                  # TECHNICAL.md, architecture.md, genie.md, dashboard-demo.gif, genie-demo.gif
 ├── resources/             # jobs.yml, pipeline.yml, dashboards.yml, genie.yml
 └── databricks.yml         # Databricks Asset Bundle
 ```
