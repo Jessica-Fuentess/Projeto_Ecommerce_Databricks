@@ -11,7 +11,7 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-[Visão geral](#visão-geral) · [Arquitetura](#arquitetura) · [Features](#features) · [Resultados](#resultados) · [Quick Start](#quick-start) · [Estrutura](#estrutura-do-projeto) · [Autora](#autora)
+[Visão geral](#visão-geral) · [Arquitetura](#arquitetura) · [Features](#features) · [Demonstração](#demonstração) · [Resultados](#resultados) · [Quick Start](#quick-start) · [Estrutura](#estrutura-do-projeto) · [Autora](#autora)
 
 </div>
 
