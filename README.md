@@ -127,19 +127,21 @@ Detalhes de cada tabela, regras e decisões em **[docs/TECHNICAL.md](docs/TECHNI
 **Pré-requisitos:** workspace Databricks com Unity Catalog e [Databricks CLI](https://docs.databricks.com/dev-tools/cli/) instalado.
 
 ```bash
-# 1. Clonar o repositório
-git clone https://github.com/Jessica-Fuentess/Projeto_Ecommerce_Databricks.git
-cd Projeto_Ecommerce_Databricks
+  # 1. Clonar o repositório
+  git clone https://github.com/Jessica-Fuentess/Projeto_Ecommerce_Databricks.git
+  cd Projeto_Ecommerce_Databricks
 
-# 2. Autenticar no workspace
-databricks auth login --host https://<seu-workspace>.cloud.databricks.com
+  # 2. Em databricks.yml, troque o host (targets → dev → workspace.host) pelo do seu workspace
 
-# 3. Validar e implantar o bundle (pipeline, job, dashboard e Genie)
-databricks bundle validate
-databricks bundle deploy
+  # 3. Autenticar
+  databricks auth login --host https://<seu-workspace>.cloud.databricks.com
 
-# 4. Executar o fluxo completo (ingestão → pipeline → testes)
-databricks bundle run job_lakehouse_diario
+  # 4. No SQL Editor do workspace, execute src/bronze/bronze_schema.sql
+
+  # 5. Validar, implantar e executar
+  databricks bundle validate
+  databricks bundle deploy
+  databricks bundle run job_lakehouse_diario
 ```
 
 > O agendamento do job está **PAUSED** por ser um projeto de portfólio.
