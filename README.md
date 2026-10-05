@@ -56,7 +56,7 @@ Orquestração com **Databricks Jobs** (`ingestão → pipeline → testes`) e t
 - ✅ Tabela de **monitoramento de qualidade de dados**
 - ✅ **Dashboard executivo** em Databricks AI/BI (Vendas, Clientes e Preços)
 - ✅ **Genie** configurado para perguntas em linguagem natural
-- ✅ **Job com agendamento seg-sex 06:00 (pausado no portfólio) e **Infrastructure as Code**
+- ✅ **Job** com agendamento seg-sex 06:00 (pausado no portfólio) e **Infrastructure as Code**
 
 ---
 
