@@ -600,6 +600,7 @@ resources/jobs.yml
 2. executar_pipeline
    ↓
 3. testes_qualidade
+```text
 
 ---
 
