@@ -11,7 +11,7 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-[Visão geral](#visão-geral) · [Arquitetura](#arquitetura) · [Features](#features) · [Resultados](#resultados) · [Quick Start](#quick-start) · [Estrutura](#estrutura-do-projeto) · [Autora](#autora)
+[Visão geral](#visão-geral) · [Arquitetura](#arquitetura) · [Features](#features) · [Demonstração](#demonstração) · [Resultados](#resultados) · [Quick Start](#quick-start) · [Estrutura](#estrutura-do-projeto) · [Autora](#autora)
 
 </div>
 
@@ -89,9 +89,6 @@ Três áreas de análise: **Vendas**, **Clientes** e **Preços**. Mais detalhes 
 
 ## Resultados
 
-<!-- DICA: adicione aqui um print do dashboard.
-![Dashboard](docs/images/dashboard.png) -->
-
 | Indicador | Valor |
 |---|---:|
 | Clientes | 50 |
@@ -161,7 +158,7 @@ Projeto_Ecommerce_Databricks/
 ├── tests/                 # testes_qualidade.py
 ├── dashboards/            # dashboard AI/BI (.lvdash.json)
 ├── genie/                 # configuração do Genie space
-├── docs/                  # TECHNICAL.md, architecture.md, genie.md
+├── docs/                  # TECHNICAL.md, architecture.md, genie.md, dashboard-demo.gif, genie-demo.gif
 ├── resources/             # jobs.yml, pipeline.yml, dashboards.yml, genie.yml
 └── databricks.yml         # Databricks Asset Bundle
 ```
@@ -191,5 +188,4 @@ Projeto_Ecommerce_Databricks/
 `SQL` · `Power BI` · `Python` · `PySpark` · `Databricks` · `Excel` · `Git`
 
 ⭐ Gostou do projeto? Deixe uma estrela no repositório!
-
 </div>
