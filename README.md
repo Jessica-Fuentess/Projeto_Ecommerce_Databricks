@@ -78,7 +78,7 @@ O dashboard tem três áreas: **Vendas**, **Clientes** e **Preços** (o GIF most
 </p>
 
 - ✅ **6 perguntas de exemplo e 4 SQLs de referência** configurados no Space.
-- 🔎 Consultas em linguagem natural sobre as 6 tabelas Gold
+- 🔎 Consultas em linguagem natural sobre as 5 tabelas Gold
 - 📊 Receita, vendas, clientes, produtos e competitividade de preços
 - 📄 Configuração: [`genie/diretoria_ecommerce.geniespace.json`](genie/diretoria_ecommerce.geniespace.json)
 - 📚 Regras e exemplos: [`docs/genie.md`](docs/genie.md)
