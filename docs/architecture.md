@@ -75,7 +75,7 @@ O projeto também contempla qualidade de dados, testes automatizados, governanç
 │  • Validação                                 │
 │  • Regras de qualidade                       │
 │                                              │
-│  PySpark + Lakeflow                         │
+│  PySpark + Lakeflow                          │
 └──────────────────────┬───────────────────────┘
                        │
                        ↓
