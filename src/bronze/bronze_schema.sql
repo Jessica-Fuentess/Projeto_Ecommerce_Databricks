@@ -19,7 +19,11 @@
 -- Schema: bronze
 --
 -- ============================================================================
-
+  CREATE CATALOG IF NOT EXISTS projeto_dados;
+  CREATE SCHEMA IF NOT EXISTS projeto_dados.bronze;
+  CREATE SCHEMA IF NOT EXISTS projeto_dados.silver;
+  CREATE SCHEMA IF NOT EXISTS projeto_dados.gold;
+  
 USE CATALOG projeto_dados;
 USE SCHEMA bronze;
 
