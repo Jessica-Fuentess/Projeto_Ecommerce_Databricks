@@ -56,7 +56,7 @@ Orquestração com **Databricks Jobs** (`ingestão → pipeline → testes`) e t
 - ✅ Tabela de **monitoramento de qualidade de dados**
 - ✅ **Dashboard executivo** em Databricks AI/BI (Vendas, Clientes e Preços)
 - ✅ **Genie** configurado para perguntas em linguagem natural
-- ✅ **Job agendado** (seg-sex, 06:00) e **Infrastructure as Code**
+- ✅ **Job com agendamento seg-sex 06:00 (pausado no portfólio) e **Infrastructure as Code**
 
 ---
 
@@ -68,7 +68,7 @@ Orquestração com **Databricks Jobs** (`ingestão → pipeline → testes`) e t
   <img src="docs/dashboard-demo.gif" alt="Demonstração do dashboard executivo" width="500">
 </p>
 
-Três áreas de análise: **Vendas**, **Clientes** e **Preços**. Mais detalhes na [documentação técnica](docs/TECHNICAL.md#5-dashboard-executivo).
+O dashboard tem três áreas: **Vendas**, **Clientes** e **Preços** (o GIF mostra a de Vendas). Mais detalhes na [documentação técnica](docs/TECHNICAL.md#5-dashboard-executivo).
 
 
 ### 🤖 Genie: perguntas em linguagem natural
@@ -77,8 +77,8 @@ Três áreas de análise: **Vendas**, **Clientes** e **Preços**. Mais detalhes 
   <img src="docs/genie-demo.gif" alt="Demonstração do Genie" width="550">
 </p>
 
-- ✅ **12 perguntas de benchmark validadas com 100% de acerto**
-- 🔎 Consultas em linguagem natural sobre as 5 tabelas Gold
+- ✅ **6 perguntas de exemplo e 4 SQLs de referência** configurados no Space.
+- 🔎 Consultas em linguagem natural sobre as 6 tabelas Gold
 - 📊 Receita, vendas, clientes, produtos e competitividade de preços
 - 📄 Configuração: [`genie/diretoria_ecommerce.geniespace.json`](genie/diretoria_ecommerce.geniespace.json)
 - 📚 Regras e exemplos: [`docs/genie.md`](docs/genie.md)
