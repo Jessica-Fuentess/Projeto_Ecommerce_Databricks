@@ -499,7 +499,7 @@ A tabela classifica o posicionamento do produto em relação ao mercado, incluin
 - mais barato que todos;
 - acima da média;
 - abaixo da média;
-- próximo da média.
+- igual à média (NA_MEDIA).
 
 ### Uso
 
@@ -600,7 +600,7 @@ resources/jobs.yml
 2. executar_pipeline
    ↓
 3. testes_qualidade
-```text
+```
 
 ---
 
@@ -693,7 +693,7 @@ A documentação do Genie está em:
 docs/genie.md
 ```
 
-A definição serializada do Space poderá ser versionada em:
+A definição serializada do Space está versionada em:
 
 ```text
 genie/diretoria_ecommerce.geniespace.json

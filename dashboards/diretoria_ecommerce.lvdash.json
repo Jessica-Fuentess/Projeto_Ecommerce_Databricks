@@ -26,6 +26,11 @@
           "displayName": "Ticket médio",
           "description": "Receita dividida pelo número de vendas",
           "expression": "SUM(`receita`) / SUM(`total_vendas`)"
+        },
+        {
+          "displayName": "Receita média por dia",
+          "description": "Receita total dividida pelo número de dias distintos no recorte",
+          "expression": "SUM(`receita`) / COUNT(DISTINCT `data`)"
         }
       ]
     },
@@ -206,10 +211,6 @@
                     {
                       "name": "sum(receita)",
                       "expression": "SUM(`receita`)"
-                    },
-                    {
-                      "name": "daily(data)",
-                      "expression": "DATE_TRUNC(\"DAY\", `data`)"
                     }
                   ],
                   "disaggregated": false
@@ -232,9 +233,6 @@
                       "places": 1
                     }
                   }
-                },
-                "period": {
-                  "fieldName": "daily(data)"
                 }
               },
               "frame": {
@@ -466,8 +464,8 @@
                       "expression": "`dia_semana`"
                     },
                     {
-                      "name": "sum(receita)",
-                      "expression": "SUM(`receita`)"
+                      "name": "measure(Receita média por dia)",
+                      "expression": "MEASURE(`Receita média por dia`)"
                     }
                   ],
                   "disaggregated": false
@@ -498,8 +496,8 @@
                   }
                 },
                 "y": {
-                  "fieldName": "sum(receita)",
-                  "displayName": "Receita",
+                  "fieldName": "measure(Receita média por dia)",
+                  "displayName": "Receita média por dia",
                   "scale": {
                     "type": "quantitative"
                   },
@@ -516,7 +514,7 @@
               },
               "frame": {
                 "showTitle": true,
-                "title": "Receita por dia da semana"
+                "title": "Receita média por dia da semana"
               }
             }
           },
