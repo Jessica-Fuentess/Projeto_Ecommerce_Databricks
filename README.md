@@ -2,7 +2,7 @@
 
 # 🛒 E-commerce Lakehouse | Databricks
 
-**Plataforma de dados ponta a ponta para e-commerce: da ingestão ao dashboard executivo e consultas em linguagem natural..**
+**Plataforma de dados ponta a ponta para e-commerce: da ingestão ao dashboard executivo e consultas em linguagem natural.**
 
 ![Databricks](https://img.shields.io/badge/Databricks-EF3A2D?style=for-the-badge&logo=databricks&logoColor=white)
 ![PySpark](https://img.shields.io/badge/PySpark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)
