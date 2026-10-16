@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛒 E-commerce Lakehouse | Databricks Databricks
+# 🛒 E-commerce Lakehouse | Databricks Data
 
 **Plataforma de dados ponta a ponta para e-commerce: da ingestão ao dashboard executivo e consultas em linguagem natural.**
 
