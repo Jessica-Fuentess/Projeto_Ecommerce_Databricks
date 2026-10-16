@@ -182,7 +182,7 @@ Projeto_Ecommerce_Databricks/
 
 **Jéssica Fuentes** · Analista de Dados | Business Intelligence
 
-15+ anos em Comércio Exterior, Logística e Operações, agora aplicando essa visão de negócio em Dados e BI.
+18+ anos em Comércio Exterior, Logística e Operações, agora aplicando essa visão de negócio em Dados e BI.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Conectar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/j%C3%A9ssica-fuentes/)
 [![GitHub](https://img.shields.io/badge/GitHub-Ver_perfil-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Jessica-Fuentess)
