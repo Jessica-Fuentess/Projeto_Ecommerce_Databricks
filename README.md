@@ -11,6 +11,10 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
+<p align="center">
+  <img src="docs/arquitetura-lakehouse.gif" alt="Animação da arquitetura Medallion: Origem, Bronze, Silver e Gold, com saídas para Dashboard, Genie e Testes" width="600">
+</p>
+
 [Visão geral](#visão-geral) · [Arquitetura](#arquitetura) · [Features](#features) · [Demonstração](#demonstração) · [Resultados](#resultados) · [Quick Start](#quick-start) · [Estrutura](#estrutura-do-projeto) · [Autora](#autora)
 
 </div>
@@ -160,7 +164,7 @@ Projeto_Ecommerce_Databricks/
 ├── tests/                 # testes_qualidade.py
 ├── dashboards/            # dashboard AI/BI (.lvdash.json)
 ├── genie/                 # configuração do Genie space
-├── docs/                  # TECHNICAL.md, architecture.md, genie.md, dashboard-demo.gif, genie-demo.gif
+├── docs/                  # TECHNICAL.md, architecture.md, genie.md e GIFs de demonstração
 ├── resources/             # jobs.yml, pipeline.yml, dashboards.yml, genie.yml
 └── databricks.yml         # Databricks Asset Bundle
 ```
